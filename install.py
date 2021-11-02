@@ -68,15 +68,13 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     dictionary = yaml.safe_load(stream)
     
-    # pprint.pprint(dictionary)
-    # exit()
-    
     # create the installation director
-    try:
-        os.makedirs('/etc/ansible/facts.d')
-    except OSError as error:
-        print(error)
-        exit()
+    if not os.path.exists('/etc/ansible/facts.d'):
+        try:
+            os.makedirs('/etc/ansible/facts.d')
+        except OSError as error:
+            print(error)
+            exit()
         
     with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
         json.dump(dictionary, write_file, indent=2)
