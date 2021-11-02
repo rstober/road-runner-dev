@@ -1,4 +1,4 @@
-#!/cm/local/apps/python3/bin/python
+#!/usr/bin/env python3
 
 import yaml
 import json
