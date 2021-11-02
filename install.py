@@ -68,11 +68,13 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     dictionary = yaml.safe_load(stream)
     
-    pprint.pprint(dictionary)
-    exit()
+    # pprint.pprint(dictionary)
+    # exit()
     
-    # with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
-        # json.dump(dictionary, write_file, indent=2)
+    # create the installation director
+    os.mkdir('/etc/ansible/facts.d')
+    with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
+        json.dump(dictionary, write_file, indent=2)
     
     # install ansible base
     os.system('pip install ansible==' + dictionary["ansible_version"])
