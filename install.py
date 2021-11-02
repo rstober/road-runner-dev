@@ -73,12 +73,11 @@ if __name__ == '__main__':
     
     # create the installation director
     try:
-        os.mkdir('/etc/ansible/facts.d/')
+        os.makedirs('/etc/ansible/facts.d')
     except OSError as error:
         print(error)
         exit()
         
-    #os.mkdir('/etc/ansible/facts.d')
     with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
         json.dump(dictionary, write_file, indent=2)
     
