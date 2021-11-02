@@ -66,7 +66,7 @@ if __name__ == '__main__':
     
     # read in client configuration
     stream = open('install_config.yaml', 'r')
-    dictionary = yaml.full_load(stream)
+    dictionary = yaml.safe_load(stream)
     
     with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
         json.dump(dictionary, write_file, indent=2)
