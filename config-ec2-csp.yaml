@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+
+  tasks:   
+ 
+    - name: "configure {{ type }} cloud service provider"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/config-ec2-csp.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/csp-{{ index }}.yaml"
+        mode: "0644"

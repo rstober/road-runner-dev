@@ -1,0 +1,20 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+  
+    # write the user password to a secure file
+    - name: add user password to /root/.userpasswd file
+      copy:
+        dest: /root/.userpassword
+        content: "{{ password }}"
+        mode: "0600"
+        
+    - name: add users
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-users.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/pb/users.yaml"
+        mode: "0644"

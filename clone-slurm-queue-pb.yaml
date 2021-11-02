@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+
+  tasks:   
+ 
+    - name: "cloning {{ queue_name }} from {{ clone_from }}"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/clone-slurm-queue.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/wlm-{{ index }}.yaml"
+        mode: "0644"

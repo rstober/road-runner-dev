@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:  
+    - name: configuring {{ wlm_name }} workload management cluster
+      brightcomputing.bcm.slurm_wlm_cluster:
+        name: {{ wlm_name }}
+        cgroups:
+          constrainDevices: true

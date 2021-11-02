@@ -1,0 +1,6 @@
+
+    - name: creating software image {{ image_name }} from {{ clone_from }}
+      brightcomputing.bcm.software_image:
+        name: {{ image_name }}
+        cloneFrom: {{ clone_from }}
+        path: {{ image_path }}

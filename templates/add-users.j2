@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: false
+  
+  tasks:
+  
+    - name: create users
+      brightcomputing.bcm.user:
+        name: {{ ansible_local["custom"]["users"] }}
+        password: {{ password }}
+        homeDirOperation: true

@@ -1,0 +1,180 @@
+---
+
+install_dir: /root/.road-runner
+tmp_dir: /root/.road-runner/tmp
+pb_dir: /root/.road-runner/pb
+update_head_node: no
+ansible_version: 2.10.*
+clone_software_image: yes
+
+apps:
+  disabled: yes
+  
+kubernetes:
+  - name: default
+    categories: k8s
+
+software_images:
+  - name: cloned-image
+    clone_from: default-image
+    path: /cm/images/cloned-image
+        
+categories:
+  - name: cloned
+    clone_from: default
+    software_image: cloned-image
+  - name: k8s
+    clone_from: default
+    software_image: cloned-image
+  - name: jup
+    clone_from: default
+    software_image: cloned-image
+    
+nodes:
+  - hostname: cnode001
+    category: k8s
+    power_control: cloud
+  - hostname: cnode002
+    category: jup
+    power_control: cloud
+  - hostname: cnode003
+    category: cloned
+    power_control: cloud
+  - hostname: cnode004
+    category: cloned
+    power_control: cloud
+
+packages:
+  - package_name: cm-tensorflow2-py37-cuda10.2-gcc8
+    target: headnode
+  - package_name: cm-tensorflow2-extra-py37-cuda10.2-gcc8
+    target: headnode
+  - package_name: cm-openmpi4-cuda10.2-ofed50-gcc8
+    target: headnode
+  - package_name: cm-ml-distdeps-cuda10.2
+    target: /cm/images/cloned-image
+  - package_name: cuda-driver
+    target: /cm/images/cloned-image
+  - package_name: cuda-dcgm
+    target: /cm/images/cloned-image
+  - package_name: '@workstation'
+    target: /cm/images/cloned-image
+    
+csps:
+  - name: amazon
+    type: aws
+    useMarketplaceAMIs: AS_NEEDED
+    
+users:
+  - robert
+  - david
+  - alice
+  - charlie
+  - edgar
+  - frank
+    
+wlms:
+  - name: slurm
+    constrain_devices: yes
+    queues:
+      - queue_name: gpu
+        clone_from: defq
+        default_queue: false
+        over_subscribe: yes:4
+        wlm_cluster: slurm
+      - queue_name: jup
+        clone_from: defq
+        default_queue: false
+        over_subscribe: yes:4
+        wlm_cluster: slurm
+    configuration_overlays:
+      - name: slurm-client
+        categories: ['cloned']
+        allHeadNodes: false
+        roles:
+          - name: slurmclient
+            wlm_cluster: slurm
+            queues: ['gpu']
+            sockets_per_board: 1
+            cores_per_socket: 2
+            threads_per_core: 2
+            slots: 4
+            real_memory: 15535
+            generic_resources:
+              - name: gpu
+                alias: gpu0
+                file: /dev/nvidia0
+                type: t4
+                count: 1
+                consumable: true
+                add_to_gres_config: true
+      - name: slurm-jupyter
+        categories: ['jup']
+        allHeadNodes: false
+        roles:
+          - name: slurmclient
+            wlm_cluster: slurm
+            queues: ['jup']
+            sockets_per_board: 1
+            cores_per_socket: 2
+            threads_per_core: 2
+            slots: 4
+            real_memory: 15535
+            generic_resources:
+              - name: gpu
+                alias: gpu0
+                file: /dev/nvidia0
+                type: t4
+                count: 1
+                consumable: true
+                add_to_gres_config: true
+
+autoscaler:
+    name: auto-scaler
+    categories: []
+    allHeadNodes: true
+    roles:
+      - name: scaleserver
+        runInterval: 60
+        debug: true
+        index: 0        
+        resource_providers:
+          - provider_name: aws
+            type: ScaleDynamicNodesProvider
+            templateNode: cnode003
+            startTemplateNode: false
+            stopTemplateNode: false
+            nodeRange: cnode003..cnode004
+            networkInterface: eth0
+            defaultResources: "['cpus=4','mem_free:slurm=16GB','gpu_free:t4:slurm=1']"
+        engines:
+          - name: slurm
+            type: ScaleHpcEngine
+            workloadsPerNode: 4
+            priority: 10
+            wlmCluster: slurm
+            trackers:
+              - name: gpu
+                type: ScaleHpcQueueTracker
+                queue: gpu
+                assignCategory: cloned
+                allowedResourceProviders: ['aws']
+                workloadsPerNode: 4
+          - name: k8s
+            type: ScaleKubeEngine
+            workloadsPerNode: 4
+            priority: 20
+            cluster: default
+            trackers:
+              - name: default
+                type: ScaleKubeNamespaceTracker
+                controllerNamespace: default
+                assignCategory: k8s
+                allowedResourceProviders: ['aws']
+                workloadsPerNode: 4
+ 
+jupyter:
+    server: b91-c83-demo
+    wlm_queues: ['jup']
+    wlm_categories: jup
+    wlm_nodes:

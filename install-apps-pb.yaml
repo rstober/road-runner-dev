@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: install applications for cluster burn-in
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/install-apps.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/pb/apps.yaml"
+        mode: "0644"

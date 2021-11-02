@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: dnf update head node and default software image
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/dnf-update.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/dnf-update-{{ index }}.yaml"
+        mode: "0644"

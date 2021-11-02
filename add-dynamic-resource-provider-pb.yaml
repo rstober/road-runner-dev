@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+
+  tasks:
+ 
+    - name: add dynamic resource provider {{ provider_name }} to the {{ role_name }} role
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-dynamic-resource-provider.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/autoscaler-{{ index }}.yaml"
+        mode: "0644"

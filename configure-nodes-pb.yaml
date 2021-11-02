@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: "configure node {{ hostname }}"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-nodes.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/nodes-{{ index }}.yaml"
+        mode: "0644"

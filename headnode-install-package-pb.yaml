@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: "install package {{ package_name }} on the head node"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/headnode-install-package-pb.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/packages-{{ index }}.yaml"
+        mode: "0644"

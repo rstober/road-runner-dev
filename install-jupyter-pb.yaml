@@ -1,0 +1,31 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+  
+  tasks:
+  
+    - name: read all ec2 provider info
+      brightcomputing.bcm.ec2_provider_info:
+      register: result
+
+    - name: set needed ec2_provider
+      set_fact:
+        aws_provider: "{{ result.ec2_providers | selectattr('name', 'equalto', 'amazon') | first }}"
+
+    - name: set needed vpc
+      set_fact:
+        vpc:  "{{ aws_provider.VPCs[0] }}"
+        
+    - name: create cm-jupyter-setup configuration file
+      template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/cm-jupyter-setup.conf.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/cm-jupyter-setup.conf"
+        mode: "0644"
+ 
+    - name: create the install-jupyter.yaml playbook
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/install-jupyter.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/pb/jupyter.yaml"
+        mode: "0644"

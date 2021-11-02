@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+
+  tasks:   
+ 
+    - name: add {{ role_name }} role to {{ ansible_local['custom']['autoscaler']['name'] }} overlay
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-role-to-auto-scaler-overlay.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/autoscaler-{{ index }}.yaml"
+        mode: "0644"

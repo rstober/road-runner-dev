@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+
+  tasks:   
+  
+    # - name: Print all available facts
+      # ansible.builtin.debug:
+        # var: ansible_facts["ansible_local"]
+ 
+    - name: create {{ ansible_local['custom']['autoscaler']['name'] }} configuration overlay
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-configuration-overlay.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/autoscaler-{{ index }}.yaml"
+        mode: "0644"

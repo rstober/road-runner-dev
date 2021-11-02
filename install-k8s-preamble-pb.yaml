@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: preparing to install kubernetes
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/install-k8s-preamble.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/kubernetes-{{ index }}.yaml"
+        mode: "0644"

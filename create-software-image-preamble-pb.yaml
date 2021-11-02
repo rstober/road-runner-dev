@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: preparing to create software images
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-software-image-preamble.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/software-image-{{ index }}.yaml"
+        mode: "0644"
