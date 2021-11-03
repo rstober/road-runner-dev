@@ -33,6 +33,9 @@ def cleanTmpDir(dirName):
             os.remove(f)
         except OSError as e:
             print("Error: %s : %s" % (f, e.strerror))
+            return false
+            
+    return true
             
 def generatePassword(length):
  
@@ -245,7 +248,7 @@ if __name__ == '__main__':
     
         index=0
         
-        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" create-add-overlay-pb.yaml'.format(index=index))
+        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} overlay_name={overlay_name} categories={categories} all_head_nodes={all_head_nodes}" create-add-overlay-pb.yaml'.format(index=index, overlay_name=dictionary["autoscaler"]["name"], categories=dictionary["autoscaler"]["categories"], all_head_nodes=dictionary["allHeadNodes"]))
         
         for role in dictionary["autoscaler"]["roles"]:
         

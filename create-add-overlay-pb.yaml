@@ -9,7 +9,7 @@
       # ansible.builtin.debug:
         # var: ansible_facts["ansible_local"]
  
-    - name: create {{ ansible_local['custom']['autoscaler']['name'] }} configuration overlay
+    - name: "create {{ overlay_name }} configuration overlay"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-configuration-overlay.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/autoscaler-{{ index }}.yaml"
