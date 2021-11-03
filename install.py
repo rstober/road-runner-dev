@@ -248,7 +248,7 @@ if __name__ == '__main__':
     
         index=0
         
-        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} overlay_name={overlay_name} categories={categories} all_head_nodes={all_head_nodes}" create-add-overlay-pb.yaml'.format(index=index, overlay_name=dictionary["autoscaler"]["name"], categories=dictionary["autoscaler"]["categories"], all_head_nodes=dictionary["allHeadNodes"]))
+        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} overlay_name={overlay_name} categories={categories} all_head_nodes={all_head_nodes}" create-add-overlay-pb.yaml'.format(index=index, overlay_name=dictionary["autoscaler"]["name"], categories=dictionary["autoscaler"]["categories"], all_head_nodes=dictionary["autoscaler"]["allHeadNodes"]))
         
         for role in dictionary["autoscaler"]["roles"]:
         
