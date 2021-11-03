@@ -72,10 +72,14 @@ Create a cluster in AWS. Road Runner does not yet discover what resources are av
 ```
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/rstober/road-runner-dev/main/install.py)"
 ```
-Road Runner will write the playbooks to /root/.road-runner/pb
-4. Run the playbooks as the user root
+4. Road Runner will write the playbooks to /root/.road-runner/pb
+5. Run the individual playbooks as shown below
 ```
 module load python3
 cd /root/.road-runner
 ansible-playbook -ilocalhost, --flush-cache configure-auto-scaler.yaml
 ```
+## Todo List
+1. **Run all the playbooks automatically**
+2. **Auto-discover the resources that are available**
+3. **Create a front-end that writes (and validates) the install_config.yaml file**
