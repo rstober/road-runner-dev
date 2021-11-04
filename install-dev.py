@@ -339,7 +339,7 @@ if __name__ == '__main__':
         os.system("./aws/install")
         
         # write the playbook that installs Jupyter and opens port 8000 in the director security group
-        os.system('ansible-playbook -ilocalhost, 'roles/jupyter/tasks/main.yaml')
+        os.system('ansible-playbook -ilocalhost, install-jupyter-pb.yaml')
         
     if "users" in dictionary:
         

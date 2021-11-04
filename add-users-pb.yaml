@@ -16,5 +16,5 @@
     - name: add users
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-users.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/pb/users.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/users/tasks/main.yaml"
         mode: "0644"
