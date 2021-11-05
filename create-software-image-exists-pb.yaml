@@ -8,6 +8,6 @@
         
     - name: "writing playbook that creates {{image_name }} software image"
       ansible.builtin.template:
-        src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-software-image.j2"
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-software-image-exists.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/software-image-{{ index }}.yaml"
         mode: "0644"
