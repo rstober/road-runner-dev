@@ -4,11 +4,11 @@
     - software_images
     - categories
     - nodes
-    - packages
+    #- packages
     # - kubernetes
-    - wlms
-    - autoscaler
-    - csps
+    #- wlms
+    #- autoscaler
+    #- csps
     - jupyter
     - users
     # - apps
