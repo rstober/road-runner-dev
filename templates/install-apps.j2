@@ -1,8 +1,4 @@
----
-- hosts: all
-  gather_facts: false
     
-  tasks:
     - name: Install user applications
       ansible.builtin.unarchive:
         src: {{ ansible_local['custom']['install_dir'] }}/jobs.tar.gz

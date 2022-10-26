@@ -1,9 +1,5 @@
----
-- hosts: all
-  gather_facts: false
-	
-  tasks:
+
     - name: configure {{ provider_name }} csp to use marketplace AMIs
-      brightcomputing.bcm.ec2_provider:
+      brightcomputing.bcm92.ec2_provider:
         name: {{ provider_name }}
         useMarketplaceAMIs: {{ useMarketplaceAMIs }}

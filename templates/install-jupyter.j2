@@ -1,11 +1,11 @@
----
-- hosts: all
-  gather_facts: false
-  
-  tasks:
       
     - name: Install Jupyter using the bash shell
       ansible.builtin.shell: cm-jupyter-setup -c {{ ansible_local['custom']['install_dir'] }}/cm-jupyter-setup.conf
+      args:
+        executable: /bin/bash
+        
+    - name: install the AWS CLI
+      ansible.builtin.shell: {{ ansible_local['custom']['install_dir'] }}/aws/install
       args:
         executable: /bin/bash
     

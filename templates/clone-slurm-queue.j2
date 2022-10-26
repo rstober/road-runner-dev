@@ -1,6 +1,6 @@
     
-    - name: cloning {{ queue_name }} from {{ clone_from }}
-      brightcomputing.bcm.slurm_job_queue:
+    - name: creating {{wlm_cluster }} queue {{ queue_name }} from {{ clone_from }}
+      brightcomputing.bcm92.slurm_job_queue:
         name: {{ queue_name }}
         cloneFrom: {{ clone_from }}
         defaultQueue: {{ default_queue }}

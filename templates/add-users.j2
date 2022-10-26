@@ -1,11 +1,6 @@
----
-- hosts: all
-  gather_facts: false
   
-  tasks:
-  
-    - name: create users
-      brightcomputing.bcm.user:
-        name: {{ ansible_local["custom"]["users"] }}
+    - name: adding user {{ username }} to LDAPS
+      brightcomputing.bcm92.user:
+        name: {{ username }}
         password: {{ password }}
         homeDirOperation: true
