@@ -408,7 +408,7 @@ if __name__ == '__main__':
         # os.system('ansible-playbook -ilocalhost, dnf-update.yaml')
         
     # run all of the playbooks
-    #os.system('ansible-playbook -ilocalhost, site.yaml')
+    os.system('ansible-playbook -ilocalhost, site.yaml')
     
     printBanner('Done')
     

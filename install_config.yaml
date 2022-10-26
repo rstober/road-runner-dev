@@ -24,18 +24,18 @@ categories:
     software_image: cloned-image
     
 nodes:
-  - hostname: cnode001
+  - hostname: node01
     category: jup
-    power_control: cloud
-  - hostname: cnode002
+    power_control: custom
+  - hostname: node02
     category: cloned
-    power_control: cloud
-  - hostname: cnode003
+    power_control: custom
+  - hostname: node03
     category: cloned
-    power_control: cloud
-  - hostname: cnode004
+    power_control: custom
+  - hostname: node04
     category: cloned
-    power_control: cloud
+    power_control: custom
 
 packages:
   - package_name: cuda11.5-toolkit
