@@ -5,9 +5,10 @@
     - categories
     - nodes
     - packages
-    - kubernetes
+    # - kubernetes
     - wlms
     - autoscaler
     - csps
     - jupyter
     - users
+    # - apps

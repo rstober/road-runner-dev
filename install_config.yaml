@@ -9,10 +9,6 @@ clone_software_image: yes
 
 apps:
   disabled: yes
-  
-kubernetes:
-  - name: default
-    categories: k8s
 
 software_images:
   - name: cloned-image
@@ -23,19 +19,16 @@ categories:
   - name: cloned
     clone_from: default
     software_image: cloned-image
-  - name: k8s
-    clone_from: default
-    software_image: cloned-image
   - name: jup
     clone_from: default
     software_image: cloned-image
     
 nodes:
   - hostname: cnode001
-    category: k8s
+    category: jup
     power_control: cloud
   - hostname: cnode002
-    category: jup
+    category: cloned
     power_control: cloud
   - hostname: cnode003
     category: cloned
@@ -45,14 +38,8 @@ nodes:
     power_control: cloud
 
 packages:
-  - package_name: cm-tensorflow2-py37-cuda10.2-gcc8
+  - package_name: cuda11.5-toolkit
     target: headnode
-  - package_name: cm-tensorflow2-extra-py37-cuda10.2-gcc8
-    target: headnode
-  - package_name: cm-openmpi4-cuda10.2-ofed50-gcc8
-    target: headnode
-  - package_name: cm-ml-distdeps-cuda10.2
-    target: /cm/images/cloned-image
   - package_name: cuda-driver
     target: /cm/images/cloned-image
   - package_name: cuda-dcgm
@@ -160,21 +147,9 @@ autoscaler:
                 assignCategory: cloned
                 allowedResourceProviders: ['aws']
                 workloadsPerNode: 4
-          - name: k8s
-            type: ScaleKubeEngine
-            workloadsPerNode: 4
-            priority: 20
-            cluster: default
-            trackers:
-              - name: default
-                type: ScaleKubeNamespaceTracker
-                controllerNamespace: default
-                assignCategory: k8s
-                allowedResourceProviders: ['aws']
-                workloadsPerNode: 4
  
 jupyter:
-    server: b91-c83-demo
+    server: jupyter
     wlm_queues: ['jup']
     wlm_categories: jup
     wlm_nodes:
