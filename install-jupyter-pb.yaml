@@ -7,7 +7,7 @@
   tasks:
   
     - name: read all ec2 provider info
-      brightcomputing.bcm.ec2_provider_info:
+      brightcomputing.bcm92.ec2_provider_info:
       register: result
 
     - name: set needed ec2_provider

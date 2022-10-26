@@ -6,7 +6,7 @@
     
   tasks:
         
-    - name: "creating category {{ category_name }}"
+    - name: "writing playbook that creates the {{ category_name }} category"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-category.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/categories-{{ index }}.yaml"

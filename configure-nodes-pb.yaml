@@ -6,7 +6,7 @@
     
   tasks:
         
-    - name: "configure node {{ hostname }}"
+    - name: "write a playbook that configures node {{ hostname }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-nodes.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/nodes-{{ index }}.yaml"

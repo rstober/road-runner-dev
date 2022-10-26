@@ -5,7 +5,7 @@
 
   tasks:   
  
-    - name: "configure {{ wlm_name }} workload management system"
+    - name: "write a playbook that configures the {{ wlm_name }} workload management system instance"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-wlm.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/wlm-{{ index }}.yaml"

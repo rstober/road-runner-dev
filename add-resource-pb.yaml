@@ -5,7 +5,7 @@
 
   tasks:   
  
-    - name: add HPC engine {{ engine_name }} to {{ role_name }} role
+    - name: write a playbook that adds generic resources to the slurmclient role
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-resource.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/wlm-{{ index }}.yaml"

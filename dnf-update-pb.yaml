@@ -9,5 +9,5 @@
     - name: dnf update head node and default software image
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/dnf-update.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/dnf-update-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/dnf-update.yaml"
         mode: "0644"

@@ -6,7 +6,7 @@
     
   tasks:
         
-    - name: install applications for cluster burn-in
+    - name: patch cuda driver service file
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/patch-cuda-driver-service-file.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/packages-{{ index }}.yaml"

@@ -6,8 +6,14 @@
     
   tasks:
         
-    - name: "installing kubernetes instance {{ instance_name }}"
+    - name: "write a playbook that installs kubernetes instance {{ instance_name }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/install-k8s.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/kubernetes-{{ index }}.yaml"
+        mode: "0644"
+        
+    - name: "write the cm-kubernetes-setup-{{ instance_name }}.conf configuration file"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/cm-kubernetes-setup.conf.template.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/cm-kubernetes-setup-{{ instance_name }}.conf"
         mode: "0644"

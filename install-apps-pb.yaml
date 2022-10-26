@@ -6,8 +6,8 @@
     
   tasks:
         
-    - name: install applications for cluster burn-in
+    - name: install applications for cluster burn-in and demos
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/install-apps.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/pb/apps.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/apps/tasks/main.yaml"
         mode: "0644"

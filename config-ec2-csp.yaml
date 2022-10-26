@@ -5,7 +5,7 @@
 
   tasks:   
  
-    - name: "configure {{ type }} cloud service provider"
+    - name: "write a playbook that configures the {{ provider_name }} cloud service provider"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/config-ec2-csp.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/csp-{{ index }}.yaml"

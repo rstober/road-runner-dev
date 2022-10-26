@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: write a playbook that adds the cluster users
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-users.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/users-{{ index }}.yaml"
+        mode: "0644"

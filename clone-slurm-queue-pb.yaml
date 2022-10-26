@@ -5,7 +5,7 @@
 
   tasks:   
  
-    - name: "cloning {{ queue_name }} from {{ clone_from }}"
+    - name: "write a playbook that creates {{wlm_cluster }} queue {{ queue_name }} from {{ clone_from }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/clone-slurm-queue.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/wlm-{{ index }}.yaml"

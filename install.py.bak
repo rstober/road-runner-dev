@@ -94,18 +94,16 @@ if __name__ == '__main__':
     os.chdir(install_dir)
     
     # install git
-    #os.system("dnf install -y git")
-    os.system("apt update")
-    os.system("apt install -y git")
+    os.system("dnf install -y git")
     
     # install road-runner distribution
-    os.system("git clone https://github.com/rstober/road-runner-dev.git %s" % install_dir)
+    os.system("git clone https://github.com/rstober/road-runner.git %s" % install_dir)
     
     # download the AWS CLI
-    # os.system("curl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"")
-    # shutil.unpack_archive('awscliv2.zip', install_dir, 'zip')
-    # os.chmod("aws/install", stat.S_IEXEC)
-    # os.chmod("aws/dist/aws", stat.S_IEXEC)
+    os.system("curl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"")
+    shutil.unpack_archive('awscliv2.zip', install_dir, 'zip')
+    os.chmod("aws/install", stat.S_IEXEC)
+    os.chmod("aws/dist/aws", stat.S_IEXEC)
     
     # create the tmp directory
     createDirectoryPath(tmp_dir)
@@ -395,20 +393,20 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, install-apps-pb.yaml')
     
     # the dnf update playbook is always created
-    # if "update_head_node" in dictionary: 
+    if "update_head_node" in dictionary: 
         
-            # os.environ['ANSIBLE_PYTHON_INTERPRETER'] = '/usr/bin/python'
-            # os.system('ansible-playbook -ilocalhost, dnf-update-pb.yaml')
+            os.environ['ANSIBLE_PYTHON_INTERPRETER'] = '/usr/bin/python'
+            os.system('ansible-playbook -ilocalhost, dnf-update-pb.yaml')
         
-    # printBanner('Run the playbooks')
+    printBanner('Run the playbooks')
     
-    # # dnf update the headnode if update_head_node config parameter is "yes"
-    # if dictionary["update_head_node"]:
+    # dnf update the headnode if update_head_node config parameter is "yes"
+    if dictionary["update_head_node"]:
      
-        # os.system('ansible-playbook -ilocalhost, dnf-update.yaml')
+        os.system('ansible-playbook -ilocalhost, dnf-update.yaml')
         
     # run all of the playbooks
-    #os.system('ansible-playbook -ilocalhost, site.yaml')
+    os.system('ansible-playbook -ilocalhost, site.yaml')
     
     printBanner('Done')
     

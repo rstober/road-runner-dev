@@ -6,7 +6,7 @@
     
   tasks:
         
-    - name: install applications for cluster burn-in
+    - name: write a playbook that installs required packages
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/node-install-package.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/packages-{{ index }}.yaml"

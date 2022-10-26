@@ -5,7 +5,7 @@
 
   tasks:   
  
-    - name: "create {{ overlay_name }} configuration overlay"
+    - name: "write a playbook that creates the {{ overlay_name }} configuration overlay"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-configuration-overlay.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/wlm-{{ index }}.yaml"

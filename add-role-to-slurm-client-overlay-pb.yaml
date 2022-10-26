@@ -5,7 +5,7 @@
 
   tasks:   
  
-    - name: "add the {{ role_name }} role to the {{ overlay_name }} configuration overlay"
+    - name: "write a playbook that adds the {{ role_name }} role to the {{ overlay_name }} configuration overlay"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-role-to-slurm-client-overlay.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/wlm-{{ index }}.yaml"
