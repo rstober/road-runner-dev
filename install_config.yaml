@@ -26,12 +26,16 @@ categories:
 nodes:
   - hostname: node01
     category: jup
+    power_control: none
   - hostname: node02
     category: cloned
+    power_control: none
   - hostname: node03
     category: cloned
+    power_control: none
   - hostname: node04
     category: cloned
+    power_control: none
 
 packages:
   - package_name: cuda11.5-toolkit
