@@ -128,10 +128,10 @@ autoscaler:
         resource_providers:
           - provider_name: aws
             type: ScaleDynamicNodesProvider
-            templateNode: cnode003
+            templateNode: node02
             startTemplateNode: false
             stopTemplateNode: false
-            nodeRange: cnode003..cnode004
+            nodeRange: node02..node04
             networkInterface: eth0
             defaultResources: "['cpus=4','mem_free:slurm=16GB','gpu_free:t4:slurm=1']"
         engines:
