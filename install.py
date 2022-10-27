@@ -197,7 +197,7 @@ if __name__ == '__main__':
         
             index+=1
             
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category={category} hostname={hostname} power_control={power_control}" configure-nodes-pb.yaml'.format(index=index, category=node["category"], hostname=node["hostname"], power_control=node["power_control"]))
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category={category} hostname={hostname} power_control={power_control} custom_power_script={custom_power_script}" configure-nodes-pb.yaml'.format(index=index, category=node["category"], hostname=node["hostname"], power_control=node["power_control"], custom_power_script=node["custom_power_script"]))
             
         concatenateFiles(dictionary["tmp_dir"], 'roles/nodes/tasks/main.yaml')
         cleanTmpDir(dictionary["tmp_dir"])
