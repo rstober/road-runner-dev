@@ -6,9 +6,9 @@
     - nodes
     #- packages
     #- kubernetes
-    #- wlms
-    #- autoscaler
+    - wlms
+    - autoscaler
     #- csps
     #- jupyter
-    #- users
+    - users
     #- apps
