@@ -27,19 +27,19 @@ nodes:
   - hostname: node01
     category: jup
     power_control: custom
-    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
+    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
   - hostname: node02
     category: cloned
     power_control: custom
-    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
+    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
   - hostname: node03
     category: cloned
     power_control: custom
-    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
+    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
   - hostname: node04
     category: cloned
     power_control: custom
-    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
+    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
 
 packages:
   - package_name: cuda11.5-toolkit
