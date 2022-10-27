@@ -5,18 +5,6 @@
     - /root/.road-runner/install_config.yaml
   
   tasks:
-  
-    - name: read all ec2 provider info
-      brightcomputing.bcm92.ec2_provider_info:
-      register: result
-
-    - name: set needed ec2_provider
-      set_fact:
-        aws_provider: "{{ result.ec2_providers | selectattr('name', 'equalto', 'amazon') | first }}"
-
-    - name: set needed vpc
-      set_fact:
-        vpc:  "{{ aws_provider.VPCs[0] }}"
         
     - name: create cm-jupyter-setup configuration file
       template:
