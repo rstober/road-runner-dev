@@ -9,6 +9,6 @@
     - wlms
     - autoscaler
     #- csps
-    #- jupyter
+    - jupyter
     - users
     #- apps
