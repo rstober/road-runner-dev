@@ -26,16 +26,20 @@ categories:
 nodes:
   - hostname: node01
     category: jup
-    power_control: none
+    power_control: custom
+    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
   - hostname: node02
     category: cloned
-    power_control: none
+    power_control: custom
+    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
   - hostname: node03
     category: cloned
-    power_control: none
+    power_control: custom
+    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
   - hostname: node04
     category: cloned
-    power_control: none
+    power_control: custom
+    customPowerScript: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
 
 packages:
   - package_name: cuda11.5-toolkit
@@ -132,7 +136,7 @@ autoscaler:
             startTemplateNode: false
             stopTemplateNode: false
             nodeRange: node02..node04
-            networkInterface: eth0
+            networkInterface: enp0s3
             defaultResources: "['cpus=4','mem_free:slurm=16GB','gpu_free:t4:slurm=1']"
         engines:
           - name: slurm
