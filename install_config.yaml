@@ -136,7 +136,7 @@ autoscaler:
             startTemplateNode: false
             stopTemplateNode: false
             nodeRange: node02..node04
-            networkInterface: enp0s3
+            networkInterface: bootif
             defaultResources: "['cpus=4','mem_free:slurm=16GB','gpu_free:t4:slurm=1']"
         engines:
           - name: slurm
