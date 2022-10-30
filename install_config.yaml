@@ -16,7 +16,6 @@ software_images:
     path: /cm/images/cloned-image
         
 categories:
-  locked: yes
   - name: cloned
     clone_from: default
     software_image: cloned-image
