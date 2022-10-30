@@ -172,6 +172,17 @@ if __name__ == '__main__':
         concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
         cleanTmpDir(dictionary["tmp_dir"])
         
+    index=0
+    
+    for image in dictionary["software_images"]:
+    
+        index+=1
+        
+        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" update-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
+        
+    concatenateFiles(dictionary["tmp_dir"], 'roles/packages/tasks/main.yaml')
+    #cleanTmpDir(dictionary["tmp_dir"])
+        
     if "categories" in dictionary:
     
         index=0
@@ -394,24 +405,11 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, install-apps-pb.yaml')
     
-    # the dnf update playbook is always created
-    # if "update_head_node" in dictionary: 
-        
-            # os.environ['ANSIBLE_PYTHON_INTERPRETER'] = '/usr/bin/python'
-            # os.system('ansible-playbook -ilocalhost, dnf-update-pb.yaml')
-        
-    # printBanner('Run the playbooks')
+    printBanner('Run the playbooks')
     
-    # # dnf update the headnode if update_head_node config parameter is "yes"
-    # if dictionary["update_head_node"]:
-     
-        # os.system('ansible-playbook -ilocalhost, dnf-update.yaml')
-        
-    # run all of the playbooks
     os.system('ansible-playbook -ilocalhost, site.yaml')
     
     printBanner('Done')
     
     print("Script time: %s" % (datetime.datetime.now() - begin_time))
                 
-        
