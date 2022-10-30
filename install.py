@@ -146,7 +146,7 @@ if __name__ == '__main__':
     shutil.copyfile('si.cmsh', '/root/.cm/cmsh/si.cmsh')
     shutil.copyfile('dp.cmsh', '/root/.cm/cmsh/dp.cmsh')
     shutil.copyfile('hosts', '/etc/ansible/hosts')
-    #shutil.copyfile('ansible.cfg', '/root/.ansible.cfg')
+    shutil.copyfile('ansible.cfg', '/root/.ansible.cfg')
     
     printBanner('Preparing playbooks')
         
@@ -157,6 +157,7 @@ if __name__ == '__main__':
         kernel_release = subprocess.run(['uname', '-r'], stdout=subprocess.PIPE).stdout.decode('utf-8')
         
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yaml")
+        shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
     
         for image in dictionary["software_images"]:
             
