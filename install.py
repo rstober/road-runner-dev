@@ -126,7 +126,7 @@ if __name__ == '__main__':
         json.dump(dictionary, write_file, indent=2)
     
     # create an ansible roles directory for each role
-    roles = list(("software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
+    roles = list(("apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
     for role in roles:
         createDirectoryPath('roles/' + role + '/tasks')
         createDirectoryPath('roles/' + role + '/vars')
@@ -158,22 +158,22 @@ if __name__ == '__main__':
         
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yaml")
     
-        # for image in dictionary["software_images"]:
+        for image in dictionary["software_images"]:
             
-            # initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + kernel_release
-            # index+=1
+            initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + kernel_release
+            index+=1
             
-            # if os.path.exists(initrd_file.strip()):
+            if os.path.exists(initrd_file.strip()):
                 
-                # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-exists-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
-            # else:
+                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-exists-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
+            else:
                
-                # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
+                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
             
-        # concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
-        # cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
+        cleanTmpDir(dictionary["tmp_dir"])
         
-        # index=0
+        index=0
     
         for image in dictionary["software_images"]:
     
@@ -181,8 +181,8 @@ if __name__ == '__main__':
         
             os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
-        concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
-        #cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["tmp_dir"], 'roles/apt_upgrade_node/tasks/main.yaml')
+        cleanTmpDir(dictionary["tmp_dir"])
         
     if "categories" in dictionary:
     

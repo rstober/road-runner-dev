@@ -1,4 +1,8 @@
 ---
+- hosts: node01
+  roles:
+    - apt_upgrade_node
+
 - hosts: localhost
   roles:
     - software_images
@@ -13,6 +17,3 @@
     #- users
     #- apps
     
-- hosts: node01
-  roles:
-    - apt_update_node
