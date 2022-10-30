@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   roles:
     - software_images
     #- categories
@@ -12,3 +12,7 @@
     #- jupyter
     #- users
     #- apps
+    
+- hosts: node01
+  roles:
+    - apt_update_node
