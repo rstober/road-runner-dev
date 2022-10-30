@@ -4,9 +4,11 @@
   vars_files:
     - /root/.road-runner/install_config.yaml
     
+  tasks:
+    
     - name: Run apt upgrade on node01
-       ansible.builtin.apt:
-         name: "*"
-         state: latest
-         upgrade: yes
-         update_cache: yes
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        upgrade: yes
+        update_cache: yes
