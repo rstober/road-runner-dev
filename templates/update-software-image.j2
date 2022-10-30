@@ -1,4 +1,9 @@
-        
+---
+- hosts: node01
+  gather_facts: false
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
     - name: Run apt upgrade on node01
        ansible.builtin.apt:
          name: "*"
