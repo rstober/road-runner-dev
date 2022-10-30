@@ -178,7 +178,7 @@ if __name__ == '__main__':
     
             index+=1
         
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" update-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
+            os.system('ansible-playbook -inode01, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
         concatenateFiles(dictionary["tmp_dir"], 'roles/packages/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
