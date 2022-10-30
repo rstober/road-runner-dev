@@ -1,5 +1,5 @@
 ---
-- hosts: node01
+- hosts: all
   gather_facts: true
   vars_files:
     - /root/.road-runner/install_config.yaml
