@@ -180,7 +180,7 @@ if __name__ == '__main__':
         
             os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
-        concatenateFiles(dictionary["tmp_dir"], 'roles/packages/tasks/main.yaml')
+        concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
         
     if "categories" in dictionary:
