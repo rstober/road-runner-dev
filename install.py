@@ -145,6 +145,7 @@ if __name__ == '__main__':
     shutil.copyfile('cu.cmsh', '/root/.cm/cmsh/cu.cmsh')
     shutil.copyfile('si.cmsh', '/root/.cm/cmsh/si.cmsh')
     shutil.copyfile('dp.cmsh', '/root/.cm/cmsh/dp.cmsh')
+    shutil.copyfile('hosts', '/etc/ansible/hosts')
     #shutil.copyfile('ansible.cfg', '/root/.ansible.cfg')
     
     printBanner('Preparing playbooks')
