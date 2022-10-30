@@ -42,7 +42,7 @@ nodes:
     custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
 
 packages:
-  - package_name: cuda11.5-toolkit
+  - package_name: cuda11.7-toolkit
     target: headnode
   - package_name: cuda-driver
     target: /cm/images/cloned-image
@@ -57,12 +57,8 @@ csps:
     useMarketplaceAMIs: AS_NEEDED
     
 users:
-  - robert
-  - david
-  - alice
-  - charlie
-  - edgar
-  - frank
+  - rstober
+  - yangya
     
 wlms:
   - name: slurm
