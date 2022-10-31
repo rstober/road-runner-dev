@@ -166,9 +166,9 @@ if __name__ == '__main__':
             
             #kernel_release = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf-8')
             print('image name: ' + image["name"])
-            #print('kernel_release: ' + image["kernel_release"])
+            print('kernel_release: ' + image["kernel_release"])
 
-            #initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
+            initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
             index+=1
             
             if os.path.exists(initrd_file.strip()):
