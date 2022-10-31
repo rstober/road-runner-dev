@@ -157,14 +157,11 @@ if __name__ == '__main__':
 
         index=0
         
-        #kernel_release = subprocess.run(['uname', '-r'], stdout=subprocess.PIPE).stdout.decode('utf-8')
-        
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yaml")
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
     
         for image in dictionary["software_images"]:
-            
-            #kernel_release = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf-8')
+           
             print('image name: ' + image["name"])
             print('kernel_release: ' + image["kernel_release"])
 
@@ -188,8 +185,6 @@ if __name__ == '__main__':
         
         concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir2"])
-        
-        sys.exit("exiting")
         
     # if "categories" in dictionary:
     
