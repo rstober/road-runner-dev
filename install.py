@@ -164,19 +164,16 @@ if __name__ == '__main__':
     
         for image in dictionary["software_images"]:
             
-            #cmd = 'cmsh -c softwareimage; use ' + image["name"] + '; get kernelversion'
-            cmd = ['cmsh', '-c', '"softwareimage; use ', image["name"], '; get kernelversion"' ]
-            #print(*cmd)
-            print(' '.join(cmd))
-            kernel_release = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf-8')
-            print('kernel_release: ' + kernel_release)
+            #kernel_release = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf-8')
+            print('kernel_release: ' + image["kernel_release"])
 
-            initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + kernel_release
+            initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
             index+=1
             
             if os.path.exists(initrd_file.strip()):
                 
                 os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-exists-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
+                
             else:
                
                 os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))

@@ -15,12 +15,15 @@ software_images:
   - name: default-image-orig
     clone_from: default-image
     path: /cm/images/default-image-orig
+    kernel_release: 5.13.0-39-generic
   - name: dgx-a100-image-orig
     clone_from: dgx-a100-image
     path: /cm/images/dgx-a100-image-orig
+    kernel_release: 5.4.0-73-generic
   - name: k8s-image
     clone_from: default-image
     path: /cm/images/k8s-image
+    kernel_release: 5.13.0-39-generic
         
 categories:
   - name: dgx
