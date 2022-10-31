@@ -165,6 +165,7 @@ if __name__ == '__main__':
             
             kernel_release = subprocess.run(['cmsh', '-c', 'softwareimage', 'use $clone_from', 'get kernelversion'], stdout=subprocess.PIPE, shell=True).stdout.decode('utf-8')
             print('kernel_release: ' + kernel_release)
+            exit
 
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + kernel_release
             index+=1
@@ -184,7 +185,7 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
         concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
-        #cleanTmpDir(dictionary["tmp_dir"])
+        #cleanTmpDir(dictionary["tmp_dir2"])
         
     # if "categories" in dictionary:
     
