@@ -15,6 +15,7 @@ import logging
 
 install_dir = "/root/.road-runner"
 tmp_dir = install_dir + '/tmp'
+tmp_dir2 = install_dir + '/tmp2'
 begin_time = datetime.datetime.now()
 
 logger = logging.getLogger()
@@ -109,6 +110,7 @@ if __name__ == '__main__':
     
     # create the tmp directory
     createDirectoryPath(tmp_dir)
+    createDirectoryPath(tmp_dir2)
     
     # load the python3 module
     exec(open('/cm/local/apps/environment-modules/4.5.3/Modules/default/init/python.py').read())
@@ -172,7 +174,7 @@ if __name__ == '__main__':
                 os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=kernel_release))
             
         concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
-        cleanTmpDir(dictionary["tmp_dir"])
+        #cleanTmpDir(dictionary["tmp_dir"])
         
         index=0
     
@@ -182,8 +184,8 @@ if __name__ == '__main__':
         
             os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
-        concatenateFiles(dictionary["tmp_dir"], 'roles/apt_upgrade_node/tasks/main.yaml')
-        cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
+        #cleanTmpDir(dictionary["tmp_dir"])
         
     # if "categories" in dictionary:
     

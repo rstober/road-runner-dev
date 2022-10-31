@@ -2,6 +2,7 @@
 
 install_dir: /root/.road-runner
 tmp_dir: /root/.road-runner/tmp
+tmp_dir2: /root/.road-runner/tmp2
 pb_dir: /root/.road-runner/pb
 update_head_node: no
 ansible_version: 2.10.*
@@ -11,17 +12,23 @@ apps:
   disabled: yes
 
 software_images:
-  - name: cloned-image
+  - name: default-image-orig
     clone_from: default-image
-    path: /cm/images/cloned-image
+    path: /cm/images/default-image-orig
+  - name: dgx-a100-image-orig
+    clone_from: dgx-a100-image
+    path: /cm/images/dgx-a100-image
+  - name: k8s-image
+    clone_from: default-image
+    path: /cm/images/k8s-image
         
 categories:
-  - name: cloned
+  - name: dgx
     clone_from: default
-    software_image: cloned-image
+    software_image: default-image
   - name: jup
     clone_from: default
-    software_image: cloned-image
+    software_image: default-image
     
 nodes:
   - hostname: node01
