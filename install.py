@@ -176,13 +176,9 @@ if __name__ == '__main__':
         concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
         
-        index=0
-    
-        for image in dictionary["software_images"]:
-    
-            index+=1
+        index=1
         
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
+        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
         concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
