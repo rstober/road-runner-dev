@@ -12,6 +12,7 @@ import string
 import secrets
 import datetime
 import logging
+import sys
 
 install_dir = "/root/.road-runner"
 tmp_dir = install_dir + '/tmp'
@@ -164,9 +165,9 @@ if __name__ == '__main__':
         for image in dictionary["software_images"]:
             
             cmd = 'cmsh -c softwareimage; use ' + image["name"] + '; get kernelversion'
+            print('cmd: ' + cmd)
             kernel_release = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True).stdout.decode('utf-8')
             print('kernel_release: ' + kernel_release)
-            exit
 
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + kernel_release
             index+=1
@@ -187,6 +188,8 @@ if __name__ == '__main__':
         
         concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir2"])
+        
+        sys.exit("exiting")
         
     # if "categories" in dictionary:
     
