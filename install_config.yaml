@@ -21,7 +21,7 @@ software_images:
     path: /cm/images/dgx-a100-image-orig
     kernel_release: 5.4.0-73-generic
   - name: k8s-image
-    clone_from: default-image
+    clone_from: default-image-orig
     path: /cm/images/k8s-image
     kernel_release: 5.13.0-39-generic
         

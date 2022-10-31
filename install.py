@@ -13,6 +13,7 @@ import secrets
 import datetime
 import logging
 import sys
+import pythoncm
 
 install_dir = "/root/.road-runner"
 tmp_dir = install_dir + '/tmp'
@@ -161,9 +162,6 @@ if __name__ == '__main__':
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
     
         for image in dictionary["software_images"]:
-           
-            print('image name: ' + image["name"])
-            print('kernel_release: ' + image["kernel_release"])
 
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
             index+=1
@@ -175,6 +173,9 @@ if __name__ == '__main__':
             else:
                
                 os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
+                
+        index+=1
+        os.system('ansible-playboook -ilocalhost, grabimage-pb.yaml'.format(index=index))
             
         concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
@@ -182,6 +183,8 @@ if __name__ == '__main__':
         index=1
         
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
+        
+        #grabimage = subprocess.run(['module load cmsh; cmsh -c "device use node01; grabimage -i k8s-image -w --wait"'], stdout=subprocess.PIPE, shell=True).stdout.decode('utf-8')
         
         concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir2"])
