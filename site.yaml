@@ -6,7 +6,7 @@
 - hosts: localhost
   roles:
     - software_images
-    #- categories
+    - categories
     #- nodes
     #- packages
     #- kubernetes

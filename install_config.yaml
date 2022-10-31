@@ -28,10 +28,10 @@ software_images:
 categories:
   - name: dgx
     clone_from: default
-    software_image: default-image
-  - name: jup
+    software_image: dgx-a100-image
+  - name: k8s
     clone_from: default
-    software_image: default-image
+    software_image: k8s-image
     
 nodes:
   - hostname: node01

@@ -16,7 +16,6 @@ import sys
 
 install_dir = "/root/.road-runner"
 tmp_dir = install_dir + '/tmp'
-tmp_dir2 = install_dir + '/tmp2'
 begin_time = datetime.datetime.now()
 
 logger = logging.getLogger()
@@ -177,31 +176,29 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
             
         concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
-        #cleanTmpDir(dictionary["tmp_dir"])
+        cleanTmpDir(dictionary["tmp_dir"])
         
         index=1
         
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
-        #grabimage = subprocess.run(['module load cmsh; cmsh -c "device use node01; grabimage -i k8s-image -w --wait"'], stdout=subprocess.PIPE, shell=True).stdout.decode('utf-8')
+        concatenateFiles(dictionary["tmp_dir"], 'roles/apt_upgrade_node/tasks/main.yaml')
+        cleanTmpDir(dictionary["tmp_dir"])
         
-        concatenateFiles(dictionary["tmp_dir2"], 'roles/apt_upgrade_node/tasks/main.yaml')
-        #cleanTmpDir(dictionary["tmp_dir2"])
-        
-    # if "categories" in dictionary:
+    if "categories" in dictionary:
     
-        # index=0
+        index=0
         
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yaml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yaml")
     
-        # for category in dictionary["categories"]:
+        for category in dictionary["categories"]:
         
-            # index+=1
+            index+=1
             
-            # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={name} clone_from={clone_from} software_image={software_image}" create-category-pb.yaml'.format(index=index, name=category["name"], clone_from=category["clone_from"], software_image=category["software_image"]))
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={name} clone_from={clone_from} software_image={software_image}" create-category-pb.yaml'.format(index=index, name=category["name"], clone_from=category["clone_from"], software_image=category["software_image"]))
             
-        # concatenateFiles(dictionary["tmp_dir"], 'roles/categories/tasks/main.yaml')
-        # cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["tmp_dir"], 'roles/categories/tasks/main.yaml')
+        cleanTmpDir(dictionary["tmp_dir"])
             
     # if "nodes" in dictionary:
     
