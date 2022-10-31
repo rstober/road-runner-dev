@@ -165,7 +165,7 @@ if __name__ == '__main__':
         for image in dictionary["software_images"]:
             
             #cmd = 'cmsh -c softwareimage; use ' + image["name"] + '; get kernelversion'
-            cmd = ['cmsh', '-c', 'softwareimage; use ', image["name"], '; get kernelversion' ]
+            cmd = ['cmsh', '-c', '"softwareimage; use ', image["name"], '; get kernelversion"' ]
             #print(*cmd)
             print(' '.join(cmd))
             kernel_release = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('utf-8')
