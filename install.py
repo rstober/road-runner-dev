@@ -110,7 +110,6 @@ if __name__ == '__main__':
     
     # create the tmp directory
     createDirectoryPath(tmp_dir)
-    createDirectoryPath(tmp_dir2)
     
     # load the python3 module
     exec(open('/cm/local/apps/environment-modules/4.5.3/Modules/default/init/python.py').read())
