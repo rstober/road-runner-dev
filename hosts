@@ -1,6 +1,6 @@
 all:
   hosts:
-    localhost
-    node01
-    node02
-    node03
+    localhost:
+    node01:
+    node02:
+    node03:
