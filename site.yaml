@@ -5,7 +5,7 @@
 
 - hosts: localhost
   roles:
-    #- software_images
+    - software_images
     #- categories
     #- nodes
     #- packages
