@@ -2,7 +2,6 @@
 
 install_dir: /root/.road-runner
 tmp_dir: /root/.road-runner/tmp
-tmp_dir2: /root/.road-runner/tmp2
 pb_dir: /root/.road-runner/pb
 update_head_node: no
 ansible_version: 2.10.*
