@@ -211,7 +211,7 @@ if __name__ == '__main__':
             
             # clone node01 to create the nodes listed in the install_config.yaml file
             
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} clone_from={clone_from}" create-node-pb.yaml'.format(index=index, node_name=node["hostname"], clone_from=node["clone_from"]))
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} clone_from={clone_from} node_category={node_category}" create-node-pb.yaml'.format(index=index, node_name=node["hostname"], clone_from=node["clone_from"], node_category=node["category"]))
             
             # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category={category} hostname={hostname} power_control={power_control} custom_power_script={custom_power_script}" configure-nodes-pb.yaml'.format(index=index, category=node["category"], hostname=node["hostname"], power_control=node["power_control"], custom_power_script=node["custom_power_script"]))
             
