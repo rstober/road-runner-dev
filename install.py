@@ -13,6 +13,7 @@ import secrets
 import datetime
 import logging
 import sys
+import pprint
 
 install_dir = "/root/.road-runner"
 tmp_dir = install_dir + '/tmp'
@@ -119,10 +120,11 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     dictionary = yaml.safe_load(stream)
     
-    for key in dictionary:
-        print(key, dictionary[key])
+    pp = pprint.PrettyPrinter(indent=4)
+    #for key in dictionary:
+    pp.pprint(dictionary)
         
-    sys.exit("Exiting")
+    #sys.exit("Exiting")
     
     # create the ansible facts.d directory
     createDirectoryPath('/etc/ansible/facts.d')
