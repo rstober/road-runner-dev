@@ -217,7 +217,7 @@ if __name__ == '__main__':
             
                 index+=1
                 
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} device_name={device_name} ip_number={ip_number} network={network}" create-node-pb.yaml'.format(index=index, node_name=node["hostname"], device_name=nic["device"], ip_number=nic["ip"], network=nic["network"]))
+                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} device_name={device_name} ip_number={ip_number} network={network}" configure-node-nic-pb.yaml'.format(index=index, node_name=node["hostname"], device_name=nic["device"], ip_number=nic["ip"], network=nic["network"]))
             
         concatenateFiles(dictionary["tmp_dir"], 'roles/nodes/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
