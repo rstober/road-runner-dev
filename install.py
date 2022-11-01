@@ -163,13 +163,13 @@ if __name__ == '__main__':
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
             index+=1
             
-            if os.path.exists(initrd_file.strip()):
+            # if os.path.exists(initrd_file.strip()):
                 
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-exists-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
+                # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-exists-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
                 
-            else:
+            #else:
                
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
@@ -199,20 +199,24 @@ if __name__ == '__main__':
         concatenateFiles(dictionary["tmp_dir"], 'roles/categories/tasks/main.yaml')
         cleanTmpDir(dictionary["tmp_dir"])
             
-    # if "nodes" in dictionary:
+    if "nodes" in dictionary:
     
-        # index=0
+        index=0
     
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/nodes/vars/main.yaml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/nodes/vars/main.yaml")
     
-        # for node in dictionary["nodes"]:
+        for node in dictionary["nodes"]:
         
-            # index+=1
+            index+=1
+            
+            # clone node01 to create the nodes listed in the install_config.yaml file
+            
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} clone_from={clone_from}" create-node-pb.yaml'.format(index=index, node_name=node["hostname"], clone_from=node["clone_from"]))
             
             # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category={category} hostname={hostname} power_control={power_control} custom_power_script={custom_power_script}" configure-nodes-pb.yaml'.format(index=index, category=node["category"], hostname=node["hostname"], power_control=node["power_control"], custom_power_script=node["custom_power_script"]))
             
-        # concatenateFiles(dictionary["tmp_dir"], 'roles/nodes/tasks/main.yaml')
-        # cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["tmp_dir"], 'roles/nodes/tasks/main.yaml')
+        cleanTmpDir(dictionary["tmp_dir"])
             
     # if "packages" in dictionary:
     

@@ -33,22 +33,27 @@ categories:
     software_image: k8s-image
     
 nodes:
-  - hostname: node01
-    category: jup
-    power_control: custom
-    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
-  - hostname: node02
-    category: cloned
-    power_control: custom
-    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
-  - hostname: node03
-    category: cloned
-    power_control: custom
-    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
-  - hostname: node04
-    category: cloned
-    power_control: custom
-    custom_power_script: /cm/local/apps/cmd/scripts/powerscripts/os-power-control.py
+  - hostname: dgx01
+    category: dgx
+    clone_from: node01
+  - hostname: dgx02
+    category: dgx
+    clone_from: node01
+  - hostname: dgx03
+    category: dgx
+    clone_from: node01
+  - hostname: dgx04
+    category: dgx
+    clone_from: node01
+  - hostname: knode01
+    category: k8s
+    clone_from: node01
+  - hostname: knode02
+    category: k8s
+    clone_from: node01
+  - hostname: knode03
+    category: k8s
+    clone_from: node01
 
 packages:
   - package_name: cuda11.7-toolkit
