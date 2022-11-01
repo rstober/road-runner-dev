@@ -1,7 +1,3 @@
-
-  - name: Print the gateway for each host when defined
-    ansible.builtin.debug:
-        msg: module_list {{ module_list }}
         
   - name: creating the {{ image_name }} software image from the {{ clone_from }} image
     brightcomputing.bcm92.software_image:
