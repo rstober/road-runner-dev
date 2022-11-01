@@ -167,7 +167,7 @@ if __name__ == '__main__':
     
         for image in dictionary["software_images"]:
         
-            print(image["modules"])
+            pprint(image)
             sys.exit("exiting")
 
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
