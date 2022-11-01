@@ -166,6 +166,9 @@ if __name__ == '__main__':
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
     
         for image in dictionary["software_images"]:
+        
+            print(image["modules"])
+            sys.exit("exiting")
 
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
             index+=1
