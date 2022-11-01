@@ -6,6 +6,10 @@
     
   tasks:
         
+    - name: Print the gateway for each host when defined
+      ansible.builtin.debug:
+        msg: module_list {{ module_list }}
+    
     - name: "writing playbook that creates {{image_name }} software image"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-software-image.j2"
