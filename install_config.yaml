@@ -20,12 +20,12 @@ software_images:
     clone_from: dgx-a100-image
     path: /cm/images/dgx-a100-image-orig
     kernel_release: 5.4.0-73-generic
-    modules: "['bonding', 'raid0', 'raid1', 'mlx5_core']"
+    modules: ['bonding','raid0','raid1','mlx5_core']
   - name: k8s-image
     clone_from: default-image-orig
     path: /cm/images/k8s-image
     kernel_release: 5.13.0-39-generic
-    modules: "['bonding', 'mlx5_core']"
+    modules: ['bonding','mlx5_core']
         
 categories:
   - name: dgx
