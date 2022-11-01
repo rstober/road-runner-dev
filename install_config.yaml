@@ -36,24 +36,52 @@ nodes:
   - hostname: dgx01
     category: dgx
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.1
+        network: internalnet
   - hostname: dgx02
     category: dgx
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.2
+        network: internalnet
   - hostname: dgx03
     category: dgx
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.3
+        network: internalnet
   - hostname: dgx04
     category: dgx
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.4
+        network: internalnet
   - hostname: knode01
     category: k8s
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.5
+        network: internalnet
   - hostname: knode02
     category: k8s
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.6
+        network: internalnet
   - hostname: knode03
     category: k8s
     clone_from: node01
+    nics:
+      - device: enp0s3
+        ip: 10.141.0.7
+        network: internalnet
 
 packages:
   - package_name: cuda11.7-toolkit
