@@ -183,7 +183,7 @@ if __name__ == '__main__':
                 
                 index+=1
             
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={clone_from} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["clone_from"], module_name=module))
+                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["clone_from"], module_name=module))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
