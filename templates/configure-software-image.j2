@@ -1,6 +1,7 @@
-
-  - name: Adding kernel module {{ module_name }} to {{ image_name }} software image
-    brightcomputing.bcm92.software_image:
-      name: {{ image_name }}
-      modules:
-        - name: {{ module_name }}
+        
+  - name: Run playbook that appends kernel module {{ module_name }} to {{ image_name }} image
+    ansible.builtin.shell: 'cmsh -c "softwareimage use {{ image_name }}; kernelmodules; append {{ module_name }}"'
+    args:
+      executable: /bin/bash
+    register: cmsh_output
+    ignore_errors: true
