@@ -14,7 +14,6 @@ import datetime
 import logging
 import sys
 import pprint
-import json
 
 install_dir = "/root/.road-runner"
 tmp_dir = install_dir + '/tmp'
@@ -175,10 +174,7 @@ if __name__ == '__main__':
             
             # skip adding kernel modules if there are none to add
             if image["modules"] is None:
-                print("it is none")
                 continue
-            else:
-                print("it is not none")
             
             for module in image["modules"]:
             
