@@ -177,7 +177,7 @@ if __name__ == '__main__':
             if image["modules"] is None:
                 print("it is none")
                 continue
-            else
+            else:
                 print("it is not none")
             
             for module in image["modules"]:
