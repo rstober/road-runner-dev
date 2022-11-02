@@ -121,9 +121,9 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     dictionary = yaml.safe_load(stream)
     
-    pp = pprint.PrettyPrinter(indent=4)
+    #pp = pprint.PrettyPrinter(indent=4)
     #for key in dictionary:
-    pp.pprint(dictionary)
+    #pp.pprint(dictionary)
         
     #sys.exit("Exiting")
     
@@ -174,7 +174,9 @@ if __name__ == '__main__':
             jsonstr = json.dumps(image["modules"])
             print(jsonstr)
                
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release} module_list={jsonstr}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"], module_list=jsonstr))
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release} module_list={image['module_list']}" create-software-image-pb.yaml')
+            
+            #os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release} module_list={jsonstr}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"], module_list=jsonstr))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
