@@ -116,6 +116,7 @@ if __name__ == '__main__':
     exec(open('/cm/local/apps/environment-modules/4.5.3/Modules/default/init/python.py').read())
     os.environ['MODULEPATH'] = '/cm/local/modulefiles:/cm/shared/modulefiles'
     module('load','python3')
+    module('load','cmsh')
     
     stream = open('install_config.yaml', 'r')
     dictionary = yaml.safe_load(stream)
@@ -179,6 +180,7 @@ if __name__ == '__main__':
             for module in image["modules"]:
             
                 print(module)
+                
                 index+=1
             
                 os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["name"], module_name=module))

@@ -10,7 +10,7 @@
       ansible.builtin.debug:
         msg: module_name {{ module_name }}
     
-    - name: "writing playbook that adds kernel module {{module_name }} to software image {{ image_name }}"
+    - name: "Write playbook that adds kernel module {{module_name }} to software image {{ image_name }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-software-image.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/software-image-{{ index }}.yaml"
