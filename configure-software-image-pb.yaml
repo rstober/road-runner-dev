@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: Print the module name
+      ansible.builtin.debug:
+        msg: module_name {{ module_name }}
+    
+    - name: "writing playbook that adds kernel module {{module_name }} to software image"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-software-image.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/software-image-{{ index }}.yaml"
+        mode: "0644"

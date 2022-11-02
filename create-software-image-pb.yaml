@@ -5,10 +5,6 @@
     - /root/.road-runner/install_config.yaml
     
   tasks:
-        
-    - name: Print the gateway for each host when defined
-      ansible.builtin.debug:
-        msg: module_list {{ module_list }}
     
     - name: "writing playbook that creates {{image_name }} software image"
       ansible.builtin.template:
