@@ -4,7 +4,6 @@
       name: {{ image_name }}
       cloneFrom: {{ clone_from }}
       path: {{ image_path }}
-      modules: {{ module_list }}
       
   - name: Wait until initrd is generated
     wait_for:
