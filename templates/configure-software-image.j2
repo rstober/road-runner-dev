@@ -1,5 +1,5 @@
 
-- name: Adding kernel module {{ module_name }} to {{ image_name }} software image
-  brightcomputing.bcm92.software_image:
-    name: {{ image_name }}
-    modules: {{ module_name }}
+  - name: Adding kernel module {{ module_name }} to {{ image_name }} software image
+    brightcomputing.bcm92.software_image:
+      name: {{ image_name }}
+      modules: {{ module_name }}
