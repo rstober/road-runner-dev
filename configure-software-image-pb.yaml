@@ -13,5 +13,5 @@
     - name: "Write playbook that adds kernel module {{module_name }} to software image {{ image_name }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-software-image.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/software-image-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tmp/software-image-{{ index }}.yaml"
         mode: "0644"

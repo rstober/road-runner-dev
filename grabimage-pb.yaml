@@ -9,5 +9,5 @@
     - name: "writing playbook that grabimage from node01 to k8s-image"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/grabimage.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/software-image-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/nodes/tmp/software-image-{{ index }}.yaml"
         mode: "0644"

@@ -188,15 +188,15 @@ if __name__ == '__main__':
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
             
-        concatenateFiles(dictionary["tmp_dir"], 'roles/software_images/tasks/main.yaml')
-        cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["install_dir"] + '/roles/software_images/tmp', 'roles/software_images/tasks/main.yaml')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/software_images/tmp')
         
         index=1
         
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
-        concatenateFiles(dictionary["tmp_dir"], 'roles/apt_upgrade_node/tasks/main.yaml')
-        cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp', 'roles/apt_upgrade_node/tasks/main.yaml')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp')
         
     if "categories" in dictionary:
     
@@ -210,8 +210,8 @@ if __name__ == '__main__':
             
             os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={name} clone_from={clone_from} software_image={software_image}" create-category-pb.yaml'.format(index=index, name=category["name"], clone_from=category["clone_from"], software_image=category["software_image"]))
             
-        concatenateFiles(dictionary["tmp_dir"], 'roles/categories/tasks/main.yaml')
-        cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["install_dir"] + '/roles/categories/tmp', 'roles/categories/tasks/main.yaml')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/categories/tmp')
             
     if "nodes" in dictionary:
     
@@ -239,8 +239,8 @@ if __name__ == '__main__':
         # rename node01 to template and set its IP
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} host_name={host_name} device_name={device_name} ip_number={ip_number}" configure-template-node-pb.yaml'.format(index=index, host_name="node01", device_name="enp0s3", ip_number="10.141.255.250"))
         
-        concatenateFiles(dictionary["tmp_dir"], 'roles/nodes/tasks/main.yaml')
-        #cleanTmpDir(dictionary["tmp_dir"])
+        concatenateFiles(dictionary["install_dir"] + '/roles/nodes/tmp', 'roles/nodes/tasks/main.yaml')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/nodes/tmp')
             
     # if "packages" in dictionary:
     

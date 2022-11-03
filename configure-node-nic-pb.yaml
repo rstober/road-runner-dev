@@ -9,5 +9,5 @@
     - name: "Writing playbook that configures NIC {{ device_name }} of node {{ node_name }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-node-nic.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/nodes-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/nodes/tmp/nodes-{{ index }}.yaml"
         mode: "0644"

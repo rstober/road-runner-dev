@@ -9,5 +9,7 @@
     - name: "Write playbook that runs apt upgrade on node01"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/update-software-image.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/apt-upgrade-node-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/apt_upgrade_node/tmp/apt-upgrade-node-{{ index }}.yaml"
         mode: "0644"
+        
+    
