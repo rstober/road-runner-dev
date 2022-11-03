@@ -9,5 +9,5 @@
     - name: "Cloning {{ clone_from }} -> {{ node_name }}"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-node.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/nodes-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/nodes/tmp/nodes-{{ index }}.yaml"
         mode: "0644"
