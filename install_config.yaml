@@ -46,49 +46,49 @@ nodes:
     category: dgx
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.1
         network: internalnet
   - hostname: dgx02
     category: dgx
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.2
         network: internalnet
   - hostname: dgx03
     category: dgx
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.3
         network: internalnet
   - hostname: dgx04
     category: dgx
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.4
         network: internalnet
   - hostname: knode01
     category: k8s
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.5
         network: internalnet
   - hostname: knode02
     category: k8s
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.6
         network: internalnet
   - hostname: knode03
     category: k8s
     clone_from: node01
     nics:
-      - device: bootif
+      - device: BOOTIF
         ip: 10.141.0.7
         network: internalnet
     
@@ -173,7 +173,7 @@ autoscaler:
             startTemplateNode: false
             stopTemplateNode: false
             nodeRange: node02..node04
-            networkInterface: bootif
+            networkInterface: BOOTIF
             defaultResources: "['cpus=4','mem_free:slurm=16GB','gpu_free:t4:slurm=1']"
         engines:
           - name: slurm
