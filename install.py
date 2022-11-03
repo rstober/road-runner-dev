@@ -139,6 +139,7 @@ if __name__ == '__main__':
     for role in roles:
         createDirectoryPath('roles/' + role + '/tasks')
         createDirectoryPath('roles/' + role + '/vars')
+        createDirectoryPath('roles/' + role + '/tmp')
     
     # install ansible base
     os.system('pip install ansible==' + dictionary["ansible_version"])
