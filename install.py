@@ -189,6 +189,13 @@ if __name__ == '__main__':
                     print(package)
                     index+=1
                     os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} package_name={package_name}" install-package-pb.yaml'.format(index=index, package_name=package))
+            
+            if image["create_root_dirs"] is not None:
+           
+                for dirpath in image["create_root_dirs"]:
+                    print(dirpath)
+                    index+=1
+                    os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} dir_path={dir_path}" create-dir-path-pb.yaml'.format(index=index, dir_path=dirpath))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
