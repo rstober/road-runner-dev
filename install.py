@@ -184,9 +184,9 @@ if __name__ == '__main__':
             
             # skip installing packages if there are none to add
             if image["packages"] is not None:
-                pp.pprint(image["packages"])
+                #pp.pprint(image["packages"])
                 for package in image["packages"]:
-                    print(Package)
+                    print(package)
                     index+=1
                     os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} package_name={package_name}" install-package-pb.yaml'.format(index=index, package_name=package))
                 
