@@ -175,29 +175,33 @@ if __name__ == '__main__':
             os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
             
             # skip adding kernel modules if there are none to add
-            if image["modules"] is None:
-                continue
+            if image["modules"] is not None:
             
-            for module in image["modules"]:
+                for module in image["modules"]:
+                    print(module)
+                    index+=1
+                    os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["work_image"], module_name=module))
             
-                print(module)
+            # skip installing packages if there are none to add
+            if image["packages"] is not None:
                 
-                index+=1
-            
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["work_image"], module_name=module))
+                for package in image["packages"]:
+                    print(Package)
+                    index+=1
+                    os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} package_name={package_name}" install-package-pb.yaml'.format(index=index, package_name=package))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
             
         concatenateFiles(dictionary["install_dir"] + '/roles/software_images/tmp', 'roles/software_images/tasks/main.yaml')
-        cleanTmpDir(dictionary["install_dir"] + '/roles/software_images/tmp')
+        #cleanTmpDir(dictionary["install_dir"] + '/roles/software_images/tmp')
         
         index=1
         
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
         concatenateFiles(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp', 'roles/apt_upgrade_node/tasks/main.yaml')
-        cleanTmpDir(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp')
+        #cleanTmpDir(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp')
         
     if "categories" in dictionary:
     
