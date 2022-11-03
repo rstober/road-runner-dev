@@ -121,9 +121,9 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     dictionary = yaml.safe_load(stream)
     
-    pp = pprint.PrettyPrinter(indent=4)
-    for key in dictionary:
-        pp.pprint(dictionary)
+    # pp = pprint.PrettyPrinter(indent=4)
+    # for key in dictionary:
+        # pp.pprint(dictionary)
         
     #sys.exit("Exiting")
     
