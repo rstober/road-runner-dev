@@ -184,7 +184,7 @@ if __name__ == '__main__':
             
             # skip installing packages if there are none to add
             if image["packages"] is not None:
-                #pp.pprint(image["packages"])
+           
                 for package in image["packages"]:
                     print(package)
                     index+=1
