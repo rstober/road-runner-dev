@@ -17,7 +17,8 @@ software_images:
     path: /cm/images/default-image-orig
     kernel_release: 5.13.0-39-generic
     modules:
-    packages: 
+    packages:
+    create_root_dirs:
   - name: dgx-a100-image-orig
     clone_from: dgx-a100-image
     work_image: dgx-a100-image
@@ -25,6 +26,7 @@ software_images:
     kernel_release: 5.4.0-73-generic
     modules: ['bonding','raid0','raid1','mlx5_core']
     packages:
+    create_root_dirs: ['/raid']
   - name: k8s-image
     clone_from: default-image
     work_image: k8s-image
@@ -32,6 +34,7 @@ software_images:
     kernel_release: 5.13.0-39-generic
     modules: ['bonding','mlx5_core']
     packages: ['ifenslave']
+    create_root_dirs:
         
 categories:
   - name: dgx
