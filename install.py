@@ -430,7 +430,7 @@ if __name__ == '__main__':
     
     printBanner('Run the playbooks')
     
-    #os.system('ansible-playbook site.yaml')
+    os.system('ansible-playbook -vv site.yaml')
     
     printBanner('Done')
     
