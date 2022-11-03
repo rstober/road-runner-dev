@@ -223,8 +223,10 @@ if __name__ == '__main__':
         
             index+=1
             
-            # clone node01 to create the nodes listed in the install_config.yaml file
+            if node["clone_from"] == "disabled":
+                continue
             
+            # clone node01 to create the nodes listed in the install_config.yaml file
             os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} clone_from={clone_from} node_category={node_category}" create-node-pb.yaml'.format(index=index, node_name=node["hostname"], clone_from=node["clone_from"], node_category=node["category"]))
             
             for nic in node["nics"]:
@@ -233,6 +235,10 @@ if __name__ == '__main__':
                 
                 os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} device_name={device_name} ip_number={ip_number} network={network}" configure-node-nic-pb.yaml'.format(index=index, node_name=node["hostname"], device_name=nic["device"], ip_number=nic["ip"], network=nic["network"]))
             
+        index+=1
+        # rename node01 to template and set its IP
+        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} host_name={host_name} device_name={device_name} ip_number={ip_number}" configure-template-node-pb.yaml'.format(index=index, host_name="node01", device_name="enp0s3", ip_number="10.141.255.250"))
+        
         concatenateFiles(dictionary["tmp_dir"], 'roles/nodes/tasks/main.yaml')
         #cleanTmpDir(dictionary["tmp_dir"])
             

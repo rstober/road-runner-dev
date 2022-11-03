@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+    
+    - name: "Write playbook that configures the template node"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/configure-template-node.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/nodes-{{ index }}.yaml"
+        mode: "0644"
