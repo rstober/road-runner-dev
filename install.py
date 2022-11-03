@@ -237,7 +237,7 @@ if __name__ == '__main__':
             
         index+=1
         # rename node01 to template and set its IP
-        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} host_name={host_name} device_name={device_name} ip_number={ip_number}" configure-template-node-pb.yaml'.format(index=index, host_name="node01", device_name="enp0s3", ip_number="10.141.255.250"))
+        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} host_name={host_name} device_name={device_name} ip_number={ip_number}" configure-template-node-pb.yaml'.format(index=index, host_name="node01", device_name="bootif", ip_number="10.141.255.250"))
         
         concatenateFiles(dictionary["install_dir"] + '/roles/nodes/tmp', 'roles/nodes/tasks/main.yaml')
         cleanTmpDir(dictionary["install_dir"] + '/roles/nodes/tmp')
