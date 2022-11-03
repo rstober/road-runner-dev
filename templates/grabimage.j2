@@ -1,5 +1,4 @@
     
-  # power on nodes
   - name: grabimage from node01 to k8s-image
     ansible.builtin.shell: 'cmsh -c "device use node01; grabimage -i k8s-image -w --wait"'
     args:
