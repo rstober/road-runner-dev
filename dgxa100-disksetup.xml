@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diskSetup>
+  <device>
+    <blockdev>/dev/nvme2n1</blockdev>
+    <partition id="boot" partitiontype="esp">
+      <size>512M</size>
+      <type>linux</type>
+      <filesystem>fat</filesystem>
+      <mountPoint>/boot/efi</mountPoint>
+      <mountOptions>defaults,noatime,nodiratime</mountOptions>
+    </partition>
+
+    <partition id="slash1">
+      <size>max</size>
+      <type>linux raid</type>
+    </partition>
+  </device>
+
+  <device>
+    <blockdev>/dev/nvme3n1</blockdev>
+    <partition id="slash2">
+      <size>max</size>
+      <type>linux raid</type>
+    </partition>
+  </device>
+
+  <device>
+  <blockdev>/dev/nvme0n1</blockdev>
+  <partition id="raid1" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+  <device>
+  <blockdev>/dev/nvme1n1</blockdev>
+  <partition id="raid2" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <device>
+  <blockdev>/dev/nvme4n1</blockdev>
+  <partition id="raid3" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <device>
+  <blockdev>/dev/nvme5n1</blockdev>
+  <partition id="raid4" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <device>
+  <blockdev>/dev/nvme6n1</blockdev>
+  <partition id="raid5" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <device>
+  <blockdev>/dev/nvme7n1</blockdev>
+  <partition id="raid6" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <device>
+  <blockdev>/dev/nvme8n1</blockdev>
+  <partition id="raid7" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <device>
+  <blockdev>/dev/nvme9n1</blockdev>
+  <partition id="raid8" partitiontype="esp">
+    <size>max</size>
+    <type>linux raid</type>
+  </partition>
+ </device>
+
+ <raid id="slash">
+  <member>slash1</member>
+  <member>slash2</member>
+  <level>1</level>
+  <filesystem>xfs</filesystem>
+  <mountPoint>/</mountPoint>
+  <mountOptions>defaults,noatime,nodiratime</mountOptions>
+ </raid>
+
+ <raid id="raid">
+  <member>raid1</member>
+  <member>raid2</member>
+  <member>raid3</member>
+  <member>raid4</member>
+  <member>raid5</member>
+  <member>raid6</member>
+  <member>raid7</member>
+  <member>raid8</member>
+  <level>0</level>
+  <filesystem>xfs</filesystem>
+  <mountPoint>/raid</mountPoint>
+  <mountOptions>defaults,noatime,nodiratime</mountOptions>
+ </raid>
+</diskSetup>
