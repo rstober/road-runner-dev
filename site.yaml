@@ -5,9 +5,9 @@
 
 - hosts: localhost
   roles:
-    - networks
+    #- networks
     #- software_images
-    #- categories
+    - categories
     #- nodes
     #- packages
     #- kubernetes
