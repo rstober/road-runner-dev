@@ -23,7 +23,7 @@
     <partition id="a1">
       <size>max</size>
       <type>linux</type>
-      <filesystem>xfs</filesystem>
+      <filesystem>ext4</filesystem>
       <mountPoint>/</mountPoint>
       <mountOptions>defaults,noatime,nodiratime</mountOptions>
     </partition>

@@ -92,7 +92,7 @@
   <member>slash1</member>
   <member>slash2</member>
   <level>1</level>
-  <filesystem>xfs</filesystem>
+  <filesystem>ext4</filesystem>
   <mountPoint>/</mountPoint>
   <mountOptions>defaults,noatime,nodiratime</mountOptions>
  </raid>
@@ -107,7 +107,7 @@
   <member>raid7</member>
   <member>raid8</member>
   <level>0</level>
-  <filesystem>xfs</filesystem>
+  <filesystem>ext4</filesystem>
   <mountPoint>/raid</mountPoint>
   <mountOptions>defaults,noatime,nodiratime</mountOptions>
  </raid>
