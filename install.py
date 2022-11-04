@@ -135,7 +135,7 @@ if __name__ == '__main__':
         json.dump(dictionary, write_file, indent=2)
     
     # create an ansible roles directory for each role
-    roles = list(("apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
+    roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
     for role in roles:
         createDirectoryPath('roles/' + role + '/tasks')
         createDirectoryPath('roles/' + role + '/vars')
@@ -201,14 +201,14 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
             
         concatenateFiles(dictionary["install_dir"] + '/roles/software_images/tmp', 'roles/software_images/tasks/main.yaml')
-        #cleanTmpDir(dictionary["install_dir"] + '/roles/software_images/tmp')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/software_images/tmp')
         
         index=1
         
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
         
         concatenateFiles(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp', 'roles/apt_upgrade_node/tasks/main.yaml')
-        #cleanTmpDir(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/apt_upgrade_node/tmp')
         
     if "categories" in dictionary:
     
@@ -253,6 +253,22 @@ if __name__ == '__main__':
         
         concatenateFiles(dictionary["install_dir"] + '/roles/nodes/tmp', 'roles/nodes/tasks/main.yaml')
         cleanTmpDir(dictionary["install_dir"] + '/roles/nodes/tmp')
+        
+    if "networks" in dictionary:
+    
+        index=0
+        
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yaml")
+        
+        for network in dictionary["networks"]:
+        
+            index+=1
+            
+            # rename node01 to template and set its IP
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} network_name={network_name} clone_from={clone_from} domain_name={domain_name} base_address={base_address} broadcast_address={broadcast_address} netmask_bits={netmask_bits} mtu={mtu} management={management}" configure-template-node-pb.yaml'.format(index=index, network_name=network["name"], clone_from=network["clone_from"], domain_name=network["domainname"], base_address=network["baseaddress"], broadcast_address=network["broadcastaddress"], netmask_bits=network["netmaskbits"], mtu=network["mtu"], management=network["management"]))
+        
+        concatenateFiles(dictionary["install_dir"] + '/roles/networks/tmp', 'roles/networks/tasks/main.yaml')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/networks/tmp')    
             
     # if "packages" in dictionary:
     

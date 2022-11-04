@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+        
+    - name: "Write playbook that creates the {{ network_name }} network from the {{ clone_from }} network"
+      ansible.builtin.template:
+        src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-network.j2"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/networks/tmp/networks-{{ index }}.yaml"
+        mode: "0644"
