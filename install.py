@@ -196,6 +196,9 @@ if __name__ == '__main__':
                     print(dirpath)
                     index+=1
                     os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} dir_path={dir_path}" create-dir-path-pb.yaml'.format(index=index, dir_path=dirpath))
+                    
+                    # added for debug
+                    os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" debug.yaml'.format(index=index))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))

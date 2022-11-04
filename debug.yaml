@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: true
+  vars_files:
+    - /root/.road-runner/install_config.yaml
+    
+  tasks:
+  
+    - name: Print debug info
+      ansible.builtin.debug:
+        msg: {{ ansible_local['custom'] | type_debug }}
