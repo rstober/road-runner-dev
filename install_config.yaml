@@ -58,9 +58,11 @@ categories:
   - name: dgx
     clone_from: default
     software_image: dgx-a100-image
+    disksetup: dgxa100-disksetup.xml
   - name: k8s
     clone_from: default
     software_image: k8s-image
+    disksetup: k8s-one-big-partition.xml
     
 nodes:
   - hostname: dgx01

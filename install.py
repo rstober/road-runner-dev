@@ -225,8 +225,7 @@ if __name__ == '__main__':
             if category["disksetup"] is not None:
             
                 index+=1
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={category_name} disk_setup={disk_setup}" configure-disk-setup-pb.yaml'.format(index=index, category_name=category["name"], disk_setup=category["disksetup"]))
-                
+                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={category_name} disk_setup={disk_setup}" configure-disk-setup-pb.yaml'.format(index=index, category_name=category["name"], disk_setup=category["disksetup"]))     
             
         concatenateFiles(dictionary["install_dir"] + '/roles/categories/tmp', 'roles/categories/tasks/main.yaml')
         cleanTmpDir(dictionary["install_dir"] + '/roles/categories/tmp')
