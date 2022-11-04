@@ -1,5 +1,5 @@
 
-- name: Copy disk setup {{ disk_setup }} to /cm/local/apps/cmd/etc/htdocs/' + {{ disk_setup }}
+- name: Copy disk setup {{ disk_setup }} to /cm/local/apps/cmd/etc/htdocs/{{ disk_setup }}
   ansible.builtin.copy:
     src: {{ disk_setup }}
     dest: "/cm/local/apps/cmd/etc/htdocs/{{ disk_setup }}"
