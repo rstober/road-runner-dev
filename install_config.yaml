@@ -9,6 +9,24 @@ clone_software_image: yes
 
 apps:
   disabled: yes
+  
+networks:
+  - name: ibnet
+    clone_from: internalnet
+    domainname: ibnet.cluster.local
+    baseaddress: 10.149.0.0
+    broadcastaddress: 10.149.255.255
+    netmaskbits: 16
+    mtu: 9000
+    management: no
+  - name: storagenet
+    clone_from: internalnet
+    domainname: storagenet.cluster.local
+    baseaddress: 10.130.123.0
+    broadcastaddress: 10.130.123.255
+    netmaskbits: 24
+    mtu: 1500
+    management: no
 
 software_images:
   - name: default-image-orig
