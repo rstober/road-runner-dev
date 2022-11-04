@@ -265,7 +265,7 @@ if __name__ == '__main__':
             index+=1
             
             # rename node01 to template and set its IP
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} network_name={network_name} clone_from={clone_from} domain_name={domain_name} base_address={base_address} broadcast_address={broadcast_address} netmask_bits={netmask_bits} mtu={mtu} management={management}" configure-template-node-pb.yaml'.format(index=index, network_name=network["name"], clone_from=network["clone_from"], domain_name=network["domainname"], base_address=network["baseaddress"], broadcast_address=network["broadcastaddress"], netmask_bits=network["netmaskbits"], mtu=network["mtu"], management=network["management"]))
+            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} network_name={network_name} clone_from={clone_from} domain_name={domain_name} base_address={base_address} broadcast_address={broadcast_address} netmask_bits={netmask_bits} mtu={mtu} management={management}" create-network-pb.yaml'.format(index=index, network_name=network["name"], clone_from=network["clone_from"], domain_name=network["domainname"], base_address=network["baseaddress"], broadcast_address=network["broadcastaddress"], netmask_bits=network["netmaskbits"], mtu=network["mtu"], management=network["management"]))
         
         concatenateFiles(dictionary["install_dir"] + '/roles/networks/tmp', 'roles/networks/tasks/main.yaml')
         cleanTmpDir(dictionary["install_dir"] + '/roles/networks/tmp')    
