@@ -1,11 +1,79 @@
 ---
-- hosts: localhost
-  gather_facts: true
-  vars_files:
-    - /root/.road-runner/install_config.yaml
-    
+- name: dump all
+  hosts: all
+ 
   tasks:
-  
-    - name: Print debug info
-      ansible.builtin.debug:
-        msg: {{ ansible_local['custom'] | type_debug }}
+    # - name: Print some debug information 
+      # vars: 
+        # msg: |
+          # Module Variables ("vars"):
+          # --------------------------------
+          # {{ vars | to_nice_json }} 
+          
+          # Environment Variables ("environment"):
+          # --------------------------------
+          # {{ environment | to_nice_json }} 
+          
+          # GROUP NAMES Variables ("group_names"):
+          # --------------------------------
+          # {{ group_names | to_nice_json }}
+          
+          # GROUPS Variables ("groups"):
+          # --------------------------------
+          # {{ groups | to_nice_json }}
+          
+          # HOST Variables ("hostvars"):
+          # --------------------------------
+          # {{ hostvars | to_nice_json }} 
+    
+      # debug: 
+        # msg: "{{ msg.split('\n') }}"       
+      # tags: debug_info
+      
+    # - name: Print Ansible vars
+      # ansible.builtin.debug:
+        # msg: {{ vars | to_nice_json }}
+      # tags: debug_info
+      
+    # - name: find out what kind of variable this is
+      # debug:
+        # msg: "{{ ansible_local['custom']['software_images'] | type_debug }}"
+    
+    # - debug:
+        # msg: "{{ item | type_debug }}"
+      # loop: "{{ ansible_local['custom']['software_images'] }}"
+        
+    # - debug:
+        # msg: "{{ item['modules'] | type_debug }}"
+      # loop: "{{ ansible_local['custom']['software_images'] }}"
+      
+    # - name: fill in template
+      # template:
+        # src: debug.j2
+        # dest: debug-pb.yaml
+      # loop: "{{ ansible_local['custom']['software_images'] }}" 
+      
+    - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
+      ansible.builtin.file:
+        path: debug-pb.yaml
+        state: touch
+      
+    - blockinfile:
+        insertafter: EOF
+        path: debug-pb.yaml
+        block: "{{ lookup('template', 'debug.j2') }}"
+        marker: ""
+      loop: "{{ ansible_local['custom']['software_images'] }}"
+        
+    # - name: Print some debug information 
+      # vars: 
+        # msg: | 
+          
+          # {{ ansible_local['custom']['software_images'] | to_nice_json }} 
+          
+      # debug: 
+        # msg: "{{ msg.split('\n') }}"       
+      # tags: debug_info
+      
+      
+        
