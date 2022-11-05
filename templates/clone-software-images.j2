@@ -4,7 +4,9 @@
       name: {{ item['name'] }}
       cloneFrom: {{ item['clone_from'] }}
       path: {{ item['path'] }}
+      {% if item['modules'] is not none %}
       modules: {{ item['modules'] }}
+      {% endif %}
       
   - name: Wait until initrd is generated
     wait_for:
