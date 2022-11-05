@@ -42,7 +42,11 @@ software_images:
     work_image: dgx-a100-image
     path: /cm/images/dgx-a100-image-orig
     kernel_release: 5.4.0-73-generic
-    modules: ['bonding','raid0','raid1','mlx5_core']
+    modules:
+      - name: bonding
+      - name: raid0
+      - name: raid1
+      - name: mlx5_core
     packages:
     create_root_dirs: ['/raid']
   - name: k8s-image
@@ -50,7 +54,9 @@ software_images:
     work_image: k8s-image
     path: /cm/images/k8s-image
     kernel_release: 5.13.0-39-generic
-    modules: ['bonding','mlx5_core']
+    modules: 
+      - name: bonding
+      - name: mlx5_core
     packages: ['ifenslave']
     create_root_dirs:
         
