@@ -13,5 +13,5 @@
 - name: creating the {{ item['name'] }} software image from the {{ item['clone_from'] }} image
     brightcomputing.bcm92.software_image:
       name: {{ item['name'] }}
-      modules: {{ item['modules'] }}
+      modules: {{ item['modules'] | items2dict }}
   {% endif %}  
