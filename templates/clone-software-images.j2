@@ -10,8 +10,8 @@
       path: /cm/images/{{ item['name'] }}/boot/initrd-{{ item['kernel_release'] }}
       
   {% if item['modules'] is not none %}
-  - name: creating the {{ item['name'] }} software image from the {{ item['clone_from'] }} image
-    brightcomputing.bcm92.software_image:
-      name: {{ item['name'] }}
-      modules: {{ item['modules'] }}
+- name: creating the {{ item['name'] }} software image from the {{ item['clone_from'] }} image
+  brightcomputing.bcm92.software_image:
+    name: {{ item['name'] }}
+    modules: {{ item['modules'] }}
   {% endif %}  
