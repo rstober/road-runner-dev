@@ -1,0 +1,5 @@
+
+  - name: creating the {{ item['name'] }} software image from the {{ item['clone_from'] }} image
+    brightcomputing.bcm92.software_image:
+      name: {{ item['clone_from'] }}
+      modules: {{ item['modules'] }}
