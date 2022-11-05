@@ -1,14 +1,14 @@
 ---
 - hosts: node01
   roles:
-    - apt_upgrade_node
+    #- apt_upgrade_node
 
 - hosts: localhost
   roles:
-    - networks
+    #- networks
     - software_images
-    - categories
-    - nodes
+    #- categories
+    #- nodes
     #- packages
     #- kubernetes
     #- wlms
