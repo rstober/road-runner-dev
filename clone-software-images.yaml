@@ -6,26 +6,26 @@
  
   tasks:
       
-    - name: Touch {{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml
-      ansible.builtin.file:
-        path: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml"
-        state: touch
+    # - name: Touch {{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml
+      # ansible.builtin.file:
+        # path: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml"
+        # state: touch
       
-    - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml
-      ansible.builtin.blockinfile:
-        insertafter: EOF
-        path: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml" 
-        block: "{{ lookup('template', 'templates/clone-software-images.j2') }}"
-        marker: ""
-      loop: "{{ ansible_local['custom']['software_images'] }}"
+    # - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml
+      # ansible.builtin.blockinfile:
+        # insertafter: EOF
+        # path: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml" 
+        # block: "{{ lookup('template', 'templates/clone-software-images.j2') }}"
+        # marker: ""
+      # loop: "{{ ansible_local['custom']['software_images'] }}"
       
-    - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml
-      ansible.builtin.blockinfile:
-        insertafter: EOF
-        path: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml" 
-        block: "{{ lookup('template', 'templates/append-kernel-modules.j2') }}"
-        marker: ""
-      loop: "{{ ansible_local['custom']['software_images'] }}"
+    # - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml
+      # ansible.builtin.blockinfile:
+        # insertafter: EOF
+        # path: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tasks/main.yaml" 
+        # block: "{{ lookup('template', 'templates/append-kernel-modules.j2') }}"
+        # marker: ""
+      # loop: "{{ ansible_local['custom']['software_images'] }}"
       
     - name: list all software images
       brightcomputing.bcm92.software_image_info: {}
@@ -33,12 +33,28 @@
       
     - name: set default_image variable
       set_fact:
-        default_image: '{{result.software_images | selectattr(''name'', ''equalto'', ''default-image'') | first}}'
+        default_image: '{{result.software_images | selectattr(''name'', ''equalto'', ''default-image'') | first }}'
+        
+    - name: debug display all software images
+      debug:
+        msg:
+        - "default_image.modules: {{ default_image.modules | type_debug }}"
+        
+    - name: debug display all software images
+      debug:
+        msg:
+        - "default_image.modules[0]: {{ default_image.modules[0] | type_debug }}"
+        
+    - name: debug display all software images
+      debug:
+        msg:
+        - "software_images.modules: {{ ansible_local['custom']['software_images'][0] }}"
+        #- "software_images.modules: {{ ansible_local['custom']['software_images'] | selectattr(''name'', ''equalto'', ''default-image'') | first }}"
       
-    - name: Append new modules to existing
-      set_fact:
-        devices: "{{ default_image.modules | combine({item: 'modules'}) }}"
-      with_items: "{{ ansible_local['custom']['software_images'] }}"
+    # - name: Append new modules to existing
+      # set_fact:
+        # devices: "{{ default_image.modules | combine({item: 'modules'}) }}"
+      # with_items: "{{ ansible_local['custom']['software_images'] }}"
 
         
     # - name: Print some debug information 
