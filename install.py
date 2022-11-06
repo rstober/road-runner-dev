@@ -180,7 +180,7 @@ if __name__ == '__main__':
                 for module in image["modules"]:
                     print(module)
                     index+=1
-                    os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["work_image"], module_name=module))
+                    os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["name"], module_name=module))
             
             # skip installing packages if there are none to add
             if image["packages"] is not None:
