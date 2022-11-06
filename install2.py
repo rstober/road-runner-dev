@@ -128,11 +128,11 @@ if __name__ == '__main__':
     #sys.exit("Exiting")
     
     # create the ansible facts.d directory
-    #createDirectoryPath('/etc/ansible/facts.d')
+    createDirectoryPath('/etc/ansible/facts.d')
     
     # write the ansible custom.fact directory 
-    #with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
-    #   json.dump(dictionary, write_file, indent=2)
+    with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
+       json.dump(dictionary, write_file, indent=2)
     
     # create an ansible roles directory for each role
     roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
