@@ -205,8 +205,6 @@ if __name__ == '__main__':
         concatenateFiles(dictionary["install_dir"] + '/roles/software_images/tmp', 'roles/software_images/tasks/main.yaml')
         cleanTmpDir(dictionary["install_dir"] + '/roles/software_images/tmp')
         
-        sys.exit("exiting")
-        
         index=1
         
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
