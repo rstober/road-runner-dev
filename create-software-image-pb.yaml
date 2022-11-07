@@ -10,7 +10,7 @@
       debug:
         msg:
           - "image_backup: {{ image_backup }}"
-          - "image_name: {{ image_backup }}"
+          - "image_name: {{ image_name }}"
     
     - name: "writing playbook that creates the {{image_name }} software image"
       ansible.builtin.template:
