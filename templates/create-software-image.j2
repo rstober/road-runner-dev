@@ -1,7 +1,7 @@
         
-  - name: "Creating the {{ image_backup | default('image_name') }} software image from the {{ clone_from }} image"
+  - name: "Creating the {{ image_backup | default('k8s-image', true) }} software image from the {{ clone_from }} image"
     brightcomputing.bcm92.software_image:
-      name: {{ image_backup | default('image_name') }}
+      name: {{ image_backup | default('k8s-image', true) }}
       cloneFrom: {{ clone_from }}
       path: {{ image_path }}
       
