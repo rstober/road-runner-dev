@@ -168,11 +168,13 @@ if __name__ == '__main__':
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
     
         for image in dictionary["software_images"]:
+        
+            print(image)
 
             initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
             index+=1
             
-            os.system('ansible-playbook -ilocalhost, -v --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release} image_backup={image_backup}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"], image_backup=image["backup"]))
+            os.system('ansible-playbook -ilocalhost, -vvv --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release} image_backup={image_backup}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"], image_backup=image["backup"]))
             
             # skip adding kernel modules if there are none to add
             if image["modules"] is not None:
@@ -196,9 +198,6 @@ if __name__ == '__main__':
                     print(dirpath)
                     index+=1
                     os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} dir_path={dir_path}" create-dir-path-pb.yaml'.format(index=index, dir_path=dirpath))
-                    
-                    # added for debug
-                    #os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" debug.yaml'.format(index=index))
                 
         index+=1
         os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
