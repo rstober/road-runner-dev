@@ -12,7 +12,7 @@
           - "image_backup: {{ image_backup }}"
           - "image_name: {{ image_name }}"
     
-    - name: "writing playbook that creates the {{image_name }} software image"
+    - name: "writing playbook that creates the {{ image_name }} software image"
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/create-software-image.j2"
         dest: "{{ ansible_local['custom']['install_dir'] }}/roles/software_images/tmp/software-image-{{ index }}.yaml"
