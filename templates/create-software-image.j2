@@ -1,5 +1,5 @@
         
-  - name: creating the {{ image_backup | default(image_name, true) }} software image from the {{ clone_from }} image
+  - name: creating the {{ image_backup | default('image_name', true) }} software image from the {{ clone_from }} image
     brightcomputing.bcm92.software_image:
       name: {{ image_backup | default(image_name, true) }}
       cloneFrom: {{ clone_from }}
