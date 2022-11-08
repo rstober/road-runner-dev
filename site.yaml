@@ -15,6 +15,6 @@
     #- autoscaler
     #- csps
     #- jupyter
-    #- users
+    - users
     #- apps
     

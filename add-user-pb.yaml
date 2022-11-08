@@ -9,5 +9,5 @@
     - name: write a playbook that adds the cluster users
       ansible.builtin.template:
         src: "{{ ansible_local['custom']['install_dir'] }}/templates/add-users.j2"
-        dest: "{{ ansible_local['custom']['install_dir'] }}/tmp/users-{{ index }}.yaml"
+        dest: "{{ ansible_local['custom']['install_dir'] }}/roles/users/tmp/users-{{ index }}.yaml"
         mode: "0644"
