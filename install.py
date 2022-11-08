@@ -459,10 +459,9 @@ if __name__ == '__main__':
             index+=1
            
             os.system('ansible-playbook -ilocalhost, -v --extra-vars "index={index} username={username} password={password}" add-user-pb.yaml'.format(index=index, username=user, password=password))
-            
-        concatenateFiles(dictionary["tmp_dir"], '/roles/users/tasks/main.yaml')
-        #cleanTmpDir(dictionary["tmp_dir"])
-        cleanTmpDir(dictionary["install_dir"] + '/roles/users/tmp')
+        
+        concatenateFiles(dictionary["install_dir"] + '/roles/users/tmp', 'roles/users/tasks/main.yaml')
+        cleanTmpDir(dictionary["install_dir"] + '/roles/users/tmp') 
         
     # if "apps" in dictionary:
     
