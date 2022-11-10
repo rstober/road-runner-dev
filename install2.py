@@ -147,8 +147,6 @@ if __name__ == '__main__':
         # createDirectoryPath('roles/' + role + '/tasks')
         # createDirectoryPath('roles/' + role + '/vars')
         # createDirectoryPath('roles/' + role + '/tmp')
-        
-    #sys.exit("exiting")
    
     # copy the CMSH aliases, bookmarks and scriptlets to their proper locations
     createDirectoryPath('/root/.cm/cmsh')
