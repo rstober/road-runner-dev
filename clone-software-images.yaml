@@ -19,9 +19,9 @@
         marker: ""
       loop: "{{ ansible_local['custom']['software_images'] }}"
       
-    # {% for image in ansible_local['custom']['software_images'] %}
-    # data_dir = {{ dir }}
-    # {% endfor %}
+    {% for image in ansible_local['custom']['software_images'] %}
+    image_name = {{ image.name }}
+    {% endfor %}
       
     # - name: list all software images
       # brightcomputing.bcm92.software_image_info: {}
