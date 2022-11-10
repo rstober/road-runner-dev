@@ -165,7 +165,10 @@ if __name__ == '__main__':
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yaml")
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
         
-        os.system('ansible-playbook -ilocalhost, -vv clone-software-images.yaml')
+        index+=1
+        
+        os.system('ansible-playbook -ilocalhost, clone-software-images.yaml')
+        
         sys.exit("exiting")
     
         # for image in dictionary["software_images"]:
