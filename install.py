@@ -137,9 +137,7 @@ if __name__ == '__main__':
     # create an ansible roles directory for each role
     roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
     for role in roles:
-        createDirectoryPath('roles/' + role + '/tasks')
-        createDirectoryPath('roles/' + role + '/vars')
-        createDirectoryPath('roles/' + role + '/tmp')
+        os.system("ansible-galaxy init --init-path roles/ %s" % role)
     
     # install ansible base
     os.system('pip install ansible==' + dictionary["ansible_version"])
