@@ -165,9 +165,13 @@ if __name__ == '__main__':
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yaml")
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/apt_upgrade_node/vars/main.yaml")
         
-        index+=1
+        #index+=1
         
         os.system('ansible-playbook -ilocalhost, clone-software-images.yaml')
+        
+        #index+=1
+        
+        os.system('ansible-playbook -ilocalhost, append-kernel-modules.yaml')
         
         sys.exit("exiting")
     
