@@ -134,18 +134,21 @@ if __name__ == '__main__':
     with open('/etc/ansible/facts.d/custom.fact', 'w') as write_file:
        json.dump(dictionary, write_file, indent=2)
     
-    # create an ansible roles directory for each role
-    roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
-    for role in roles:
-        createDirectoryPath('roles/' + role + '/tasks')
-        createDirectoryPath('roles/' + role + '/vars')
-        createDirectoryPath('roles/' + role + '/tmp')
-    
     # install ansible base
     os.system('pip install ansible==' + dictionary["ansible_version"])
     
     # install the brightcomputing.bcm92 Ansible collection
     os.system("ansible-galaxy collection install brightcomputing.bcm92")
+    
+    # create an ansible roles directory for each role
+    roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
+    for role in roles:
+        os.system("ansible-galaxy init path roles/" + role)
+        # createDirectoryPath('roles/' + role + '/tasks')
+        # createDirectoryPath('roles/' + role + '/vars')
+        # createDirectoryPath('roles/' + role + '/tmp')
+        
+    sys.exit("exiting")
    
     # copy the CMSH aliases, bookmarks and scriptlets to their proper locations
     createDirectoryPath('/root/.cm/cmsh')
