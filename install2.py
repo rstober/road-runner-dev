@@ -144,9 +144,6 @@ if __name__ == '__main__':
     roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
     for role in roles:
         os.system("ansible-galaxy init --init-path roles/ %s" % role)
-        # createDirectoryPath('roles/' + role + '/tasks')
-        # createDirectoryPath('roles/' + role + '/vars')
-        # createDirectoryPath('roles/' + role + '/tmp')
    
     # copy the CMSH aliases, bookmarks and scriptlets to their proper locations
     createDirectoryPath('/root/.cm/cmsh')
