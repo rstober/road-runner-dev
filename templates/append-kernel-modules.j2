@@ -8,5 +8,12 @@
     modules: {{ im.modules + image.modules }}
       
 {% endif %}
+{% if image.modules is not none and image.name == image.backup %}
+- name: Add kernel modules to software image {{ image.name }}
+  brightcomputing.bcm92.software_image:
+    name: {{ im.name }}
+    modules: {{ ansible_local['custom']['software_images'][0]['modules'] + image.modules }}
+
+{% endif %}
 {% endfor %}
 {% endfor %}
