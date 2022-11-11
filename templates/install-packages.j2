@@ -1,6 +1,7 @@
 
-- name: install {{ item['packages'] }} on node
-  ansible.builtin.apt:
-    name: {{ item['packages'] }}
-    state: present
-    update_cache: yes
+- name: update and upgrade software image {{ item['name'] }}
+  ansible.builtin.shell: 'chroot /cm/images/{{ item['name'] }} /bin/bash apt update && apt full-upgrade'
+  args:
+    executable: /bin/bash
+  register: apt_upgrade_output
+  ignore_errors: true
