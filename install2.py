@@ -163,6 +163,7 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
         
+        # write playbook that upgrades knode01
         os.system('ansible-playbook -ilocalhost, -vv install-packages.yml')
         
         sys.exit("exiting")
