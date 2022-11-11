@@ -135,7 +135,7 @@ if __name__ == '__main__':
     os.system("ansible-galaxy collection install brightcomputing.bcm92")
     
     # create an ansible roles directory for each role
-    roles = list(("networks", "apt_upgrade_node", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
+    roles = list(("networks", "updates", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
     for role in roles:
         os.system("ansible-galaxy init --init-path roles/ %s" % role)
    
@@ -162,6 +162,8 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, clone-software-images.yml')
         
         os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
+        
+        os.system('ansible-playbook -ilocalhost, -vv install-packages.yml')
         
         sys.exit("exiting")
     
