@@ -153,8 +153,6 @@ if __name__ == '__main__':
     printBanner('Preparing playbooks')
         
     if "software_images" in config:
-
-        index=0
         
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yml")
         shutil.copyfile("default-ansible-vars", install_dir + "/roles/updates/vars/main.yml")
@@ -163,76 +161,23 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
         
-        # write playbook that upgrades knode01
-        os.system('ansible-playbook -ilocalhost, -vv install-packages.yml')
-        
-        sys.exit("exiting")
-    
-        # for image in config["software_images"]:
-
-            # initrd_file = '/cm/images/' + image["name"] + '/boot/initrd-' + image["kernel_release"]
-            # index+=1
-            
-            # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} clone_from={clone_from} image_path={image_path} kernel_release={kernel_release}" create-software-image-pb.yaml'.format(index=index, image_name=image["name"], clone_from=image["clone_from"], image_path=image["path"], kernel_release=image["kernel_release"]))
-            
-            # # skip adding kernel modules if there are none to add
-            # if image["modules"] is not None:
-            
-                # for module in image["modules"]:
-                    # print(module)
-                    # index+=1
-                    # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} image_name={image_name} module_name={module_name}" configure-software-image-pb.yaml'.format(index=index, image_name=image["work_image"], module_name=module))
-            
-            # # skip installing packages if there are none to add
-            # if image["packages"] is not None:
-           
-                # for package in image["packages"]:
-                    # print(package)
-                    # index+=1
-                    # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} package_name={package_name}" install-package-pb.yaml'.format(index=index, package_name=package))
-            
-            # if image["create_root_dirs"] is not None:
-           
-                # for dirpath in image["create_root_dirs"]:
-                    # print(dirpath)
-                    # index+=1
-                    # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} dir_path={dir_path}" create-dir-path-pb.yaml'.format(index=index, dir_path=dirpath))
-                    
-                    # # added for debug
-                    # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" debug.yaml'.format(index=index))
-                
-        # index+=1
-        # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" grabimage-pb.yaml'.format(index=index))
-            
-        # concatenateFiles(config["install_dir"] + '/roles/software_images/tmp', 'roles/software_images/tasks/main.yaml')
-        # cleanTmpDir(config["install_dir"] + '/roles/software_images/tmp')
-        
-        # index=1
-        
-        # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index}" update-software-image-pb.yaml'.format(index=index))
-        
-        # concatenateFiles(config["install_dir"] + '/roles/apt_upgrade_node/tmp', 'roles/apt_upgrade_node/tasks/main.yaml')
-        # cleanTmpDir(config["install_dir"] + '/roles/apt_upgrade_node/tmp')
-        
     if "categories" in config:
     
         index=0
         
-        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yaml")
-    
-        for category in config["categories"]:
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yml")
+            
+        os.system('ansible-playbook -ilocalhost, clone-categories.yml')
         
-            index+=1
+        sys.exit("exiting")
             
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={name} clone_from={clone_from} software_image={software_image}" create-category-pb.yaml'.format(index=index, name=category["name"], clone_from=category["clone_from"], software_image=category["software_image"]))
+            # if category["disksetup"] is not None:
             
-            if category["disksetup"] is not None:
+                # index+=1
+                # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={category_name} disk_setup={disk_setup}" configure-disk-setup-pb.yaml'.format(index=index, category_name=category["name"], disk_setup=category["disksetup"]))     
             
-                index+=1
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={category_name} disk_setup={disk_setup}" configure-disk-setup-pb.yaml'.format(index=index, category_name=category["name"], disk_setup=category["disksetup"]))     
-            
-        concatenateFiles(config["install_dir"] + '/roles/categories/tmp', 'roles/categories/tasks/main.yaml')
-        cleanTmpDir(config["install_dir"] + '/roles/categories/tmp')
+        # concatenateFiles(config["install_dir"] + '/roles/categories/tmp', 'roles/categories/tasks/main.yaml')
+        # cleanTmpDir(config["install_dir"] + '/roles/categories/tmp')
             
     if "nodes" in config:
     
