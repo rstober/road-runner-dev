@@ -1,0 +1,11 @@
+        
+- name: clone {{ item['clone_from'] }} category to {{ item['name'] }}
+  brightcomputing.bcm92.category:
+    name: {{ item['name'] }}
+    cloneFrom: {{ item['clone_from'] }}
+        
+- name: set {{ item['name'] }} category software image to {{ item['software_image'] }}
+  brightcomputing.bcm92.category:
+    name: {{ item['name'] }}
+    softwareImageProxy: 
+      parentSoftwareImage: {{ item['software_image'] }} 
