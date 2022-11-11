@@ -162,67 +162,35 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
         
     if "categories" in config:
-    
-        index=0
         
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yml")
             
         os.system('ansible-playbook -ilocalhost, clone-categories.yml')
-        
-        sys.exit("exiting")
-            
-            # if category["disksetup"] is not None:
-            
-                # index+=1
-                # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} category_name={category_name} disk_setup={disk_setup}" configure-disk-setup-pb.yaml'.format(index=index, category_name=category["name"], disk_setup=category["disksetup"]))     
-            
-        # concatenateFiles(config["install_dir"] + '/roles/categories/tmp', 'roles/categories/tasks/main.yaml')
-        # cleanTmpDir(config["install_dir"] + '/roles/categories/tmp')
             
     if "nodes" in config:
     
-        index=0
-    
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/nodes/vars/main.yaml")
-    
-        for node in config["nodes"]:
         
-            index+=1
+        os.system('ansible-playbook -ilocalhost, clone-nodes.yml')
             
-            if node["clone_from"] == "disabled":
-                continue
-            
-            # clone node01 to create the nodes listed in the install_config.yaml file
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} clone_from={clone_from} node_category={node_category}" create-node-pb.yaml'.format(index=index, node_name=node["hostname"], clone_from=node["clone_from"], node_category=node["category"]))
-            
-            for nic in node["nics"]:
-            
-                index+=1
-                
-                os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} node_name={node_name} device_name={device_name} ip_number={ip_number} network={network}" configure-node-nic-pb.yaml'.format(index=index, node_name=node["hostname"], device_name=nic["device"], ip_number=nic["ip"], network=nic["network"]))
-            
-        index+=1
         # rename node01 to template and set its IP
-        os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} host_name={host_name} device_name={device_name} ip_number={ip_number}" configure-template-node-pb.yaml'.format(index=index, host_name="node01", device_name="bootif", ip_number="10.141.255.250"))
+        # os.system('ansible-playbook -ilocalhost, --extra-vars "host_name={host_name} device_name={device_name} ip_number={ip_number}" config-template-node.yml'.format(host_name="node01", device_name="bootif", ip_number="10.141.255.250"))
         
-        concatenateFiles(config["install_dir"] + '/roles/nodes/tmp', 'roles/nodes/tasks/main.yaml')
-        cleanTmpDir(config["install_dir"] + '/roles/nodes/tmp')
-        
-    if "networks" in config:
+    # if "networks" in config:
     
-        index=0
+        # index=0
         
-        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yaml")
+        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yaml")
         
-        for network in config["networks"]:
+        # for network in config["networks"]:
         
-            index+=1
+            # index+=1
             
-            # rename node01 to template and set its IP
-            os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} network_name={network_name} clone_from={clone_from} domain_name={domain_name} base_address={base_address} broadcast_address={broadcast_address} netmask_bits={netmask_bits} mtu={mtu} management={management}" create-network-pb.yaml'.format(index=index, network_name=network["name"], clone_from=network["clone_from"], domain_name=network["domainname"], base_address=network["baseaddress"], broadcast_address=network["broadcastaddress"], netmask_bits=network["netmaskbits"], mtu=network["mtu"], management=network["management"]))
+            # # rename node01 to template and set its IP
+            # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} network_name={network_name} clone_from={clone_from} domain_name={domain_name} base_address={base_address} broadcast_address={broadcast_address} netmask_bits={netmask_bits} mtu={mtu} management={management}" create-network-pb.yaml'.format(index=index, network_name=network["name"], clone_from=network["clone_from"], domain_name=network["domainname"], base_address=network["baseaddress"], broadcast_address=network["broadcastaddress"], netmask_bits=network["netmaskbits"], mtu=network["mtu"], management=network["management"]))
         
-        concatenateFiles(config["install_dir"] + '/roles/networks/tmp', 'roles/networks/tasks/main.yaml')
-        cleanTmpDir(config["install_dir"] + '/roles/networks/tmp')    
+        # concatenateFiles(config["install_dir"] + '/roles/networks/tmp', 'roles/networks/tasks/main.yaml')
+        # cleanTmpDir(config["install_dir"] + '/roles/networks/tmp')    
             
     # if "packages" in config:
     

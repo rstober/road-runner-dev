@@ -6,6 +6,10 @@ pb_dir: /root/.road-runner/pb
 update_head_node: no
 ansible_version: 2.10.*
 clone_software_image: yes
+template_node: node01
+template_ip: 10.141.255.250
+template_name: template
+template_nic: bootif
 
 apps:
   disabled: yes
