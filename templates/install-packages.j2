@@ -1,0 +1,6 @@
+
+- name: install {{ item['packages'] }} on node
+  ansible.builtin.apt:
+    name: {{ item['packages'] }}
+    state: present
+    update_cache: yes
