@@ -73,11 +73,11 @@ software_images:
 categories:
   - name: dgx
     clone_from: default
-    software_image: dgx-a100-image
+    software_image: dgx-os-5.4-a100-image
     disksetup: dgxa100-disksetup.xml
   - name: k8s
     clone_from: default
-    software_image: k8s-image
+    software_image: k8s-master-image
     disksetup: k8s-one-big-partition.xml
     
 nodes:
