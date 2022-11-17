@@ -37,15 +37,15 @@ software_images:
     backup: default-image-orig
     clone_from: default-image
     path: /cm/images/default-image-orig
-    kernel_release: 5.13.0-39-generic
+    kernel_release: 5.15.0-50-generic
     modules:
     packages:
     create_root_dirs:
-  - name: dgx-a100-image
-    backup: dgx-a100-image-orig
-    clone_from: dgx-a100-image
-    path: /cm/images/dgx-a100-image-orig
-    kernel_release: 5.4.0-73-generic
+  - name: dgx-os-5.4-a100-image
+    backup: dgx-os-5.4-a100-image-orig
+    clone_from: dgx-os-5.4-a100-image
+    path: /cm/images/dgx-os-5.4-a100-image-orig
+    kernel_release: 5.4.0-124-generic
     modules: 
       - name: bonding
         parameters: ''
@@ -57,11 +57,11 @@ software_images:
         parameters: ''
     packages: ['ifenslave']
     create_root_dirs: ['/raid']
-  - name: k8s-image
-    backup: k8s-image
+  - name: k8s-master-image
+    backup: k8s-master-image
     clone_from: default-image
-    path: /cm/images/k8s-image
-    kernel_release: 5.13.0-39-generic
+    path: /cm/images/k8s-master-image
+    kernel_release: 5.15.0-50-generic
     modules:
       - name: bonding
         parameters: ''
