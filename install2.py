@@ -169,18 +169,17 @@ if __name__ == '__main__':
             
     if "nodes" in config:
     
-        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/nodes/vars/main.yaml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/nodes/vars/main.yml")
         
         os.system('ansible-playbook -ilocalhost, clone-nodes.yml')
-            
-        # rename node01 to template and set its IP
-        # os.system('ansible-playbook -ilocalhost, --extra-vars "host_name={host_name} device_name={device_name} ip_number={ip_number}" config-template-node.yml'.format(host_name="node01", device_name="bootif", ip_number="10.141.255.250"))
         
-    # if "networks" in config:
+    if "networks" in config:
     
-        # index=0
+        #index=0
         
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yaml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yml")
+        
+        os.system('ansible-playbook -ilocalhost, clone-networks.yml')
         
         # for network in config["networks"]:
         
