@@ -78,49 +78,49 @@ nodes:
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.4
+        ip: 10.130.122.16
         network: internalnet
   - hostname: dgx02
     category: dgx
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.5
+        ip: 10.130.122.17
         network: internalnet
   - hostname: dgx03
     category: dgx
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.6
+        ip: 10.130.122.18
         network: internalnet
   - hostname: dgx04
     category: dgx
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.7
+        ip: 10.130.122.19
         network: internalnet
   - hostname: knode01
     category: k8s
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.8
+        ip: 10.130.122.20
         network: internalnet
   - hostname: knode02
     category: k8s
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.9
+        ip: 10.130.122.21
         network: internalnet
   - hostname: knode03
     category: k8s
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.130.122.10
+        ip: 10.130.122.22
         network: internalnet
     
 csps:
