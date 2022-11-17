@@ -174,23 +174,21 @@ if __name__ == '__main__':
         os.system('ansible-playbook -ilocalhost, clone-nodes.yml')
         
     if "networks" in config:
-    
-        #index=0
         
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yml")
         
         os.system('ansible-playbook -ilocalhost, clone-networks.yml')
-        
-        # for network in config["networks"]:
-        
-            # index+=1
             
-            # # rename node01 to template and set its IP
-            # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} network_name={network_name} clone_from={clone_from} domain_name={domain_name} base_address={base_address} broadcast_address={broadcast_address} netmask_bits={netmask_bits} mtu={mtu} management={management}" create-network-pb.yaml'.format(index=index, network_name=network["name"], clone_from=network["clone_from"], domain_name=network["domainname"], base_address=network["baseaddress"], broadcast_address=network["broadcastaddress"], netmask_bits=network["netmaskbits"], mtu=network["mtu"], management=network["management"]))
+    if "users" in config:
+    
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/users/vars/main.yaml")
         
-        # concatenateFiles(config["install_dir"] + '/roles/networks/tmp', 'roles/networks/tasks/main.yaml')
-        # cleanTmpDir(config["install_dir"] + '/roles/networks/tmp')    
+        for user in config["users"]:
             
+            password=generatePassword(8)
+            
+            os.system('ansible-playbook -ilocalhost, -e "username={username} password={password}" add-user.yml'.format(username=user, password=password))
+        
     # if "packages" in config:
     
         # index=0
@@ -359,23 +357,6 @@ if __name__ == '__main__':
         
         # # write the playbook that installs Jupyter and opens port 8000 in the director security group
         # os.system('ansible-playbook -ilocalhost, install-jupyter-pb.yaml')
-        
-    # if "users" in config:
-    
-        # index=0
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/users/vars/main.yaml")
-        # password=generatePassword(20)
-        
-        # os.system('ansible-playbook -ilocalhost, --extra-vars "password={password}" add-user-password-pb.yaml'.format(password=password))
-        
-        # for user in config["users"]:
-            
-            # index+=1
-           
-            # os.system('ansible-playbook -ilocalhost, --extra-vars "index={index} username={username} password={password}" add-user-pb.yaml'.format(index=index, username=user, password=password))
-            
-        # concatenateFiles(config["tmp_dir"], 'roles/users/tasks/main.yaml')
-        # cleanTmpDir(config["tmp_dir"])
         
     # if "apps" in config:
     
