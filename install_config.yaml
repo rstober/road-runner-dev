@@ -7,7 +7,7 @@ update_head_node: no
 ansible_version: 2.10.*
 clone_software_image: yes
 template_node: node01
-template_ip: 10.141.255.250
+template_ip: 10.130.122.250
 template_name: template
 template_nic: bootif
 
@@ -22,14 +22,6 @@ networks:
     broadcastaddress: 10.149.255.255
     netmaskbits: 16
     mtu: 9000
-    management: no
-  - name: storagenet
-    clone_from: internalnet
-    domainname: storagenet.cluster.local
-    baseaddress: 10.130.123.0
-    broadcastaddress: 10.130.123.255
-    netmaskbits: 24
-    mtu: 1500
     management: no
 
 software_images:
@@ -86,49 +78,49 @@ nodes:
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.1
+        ip: 10.130.122.4
         network: internalnet
   - hostname: dgx02
     category: dgx
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.2
+        ip: 10.130.122.5
         network: internalnet
   - hostname: dgx03
     category: dgx
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.3
+        ip: 10.130.122.6
         network: internalnet
   - hostname: dgx04
     category: dgx
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.4
+        ip: 10.130.122.7
         network: internalnet
   - hostname: knode01
     category: k8s
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.5
+        ip: 10.130.122.8
         network: internalnet
   - hostname: knode02
     category: k8s
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.6
+        ip: 10.130.122.9
         network: internalnet
   - hostname: knode03
     category: k8s
     clone_from: node01
     nics:
       - device: BOOTIF
-        ip: 10.141.0.7
+        ip: 10.130.122.10
         network: internalnet
     
 csps:
