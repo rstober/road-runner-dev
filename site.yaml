@@ -1,13 +1,14 @@
 ---
 - hosts: node01
   roles:
-    - apt_upgrade_node
+    #- updates
 
 - hosts: localhost
   roles:
-    - networks
-    - software_images
-    - categories
+    #- networks
+    #- software_images
+    #- updates
+    #- categories
     - nodes
     #- packages
     #- kubernetes
@@ -15,6 +16,6 @@
     #- autoscaler
     #- csps
     #- jupyter
-    - users
+    #- users
     #- apps
     
