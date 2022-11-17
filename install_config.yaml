@@ -2,7 +2,6 @@
 
 install_dir: /root/.road-runner
 tmp_dir: /root/.road-runner/tmp
-pb_dir: /root/.road-runner/pb
 update_head_node: no
 ansible_version: 2.10.*
 clone_software_image: yes
@@ -80,6 +79,12 @@ nodes:
       - device: BOOTIF
         ip: 10.130.122.16
         network: internalnet
+      - device: enp225s0f1
+        ip: 0.0.0.0
+        network: ''
+      - device: enp97s0f1
+        ip: 0.0.0.0
+        network: ''
   - hostname: dgx02
     category: dgx
     clone_from: node01
