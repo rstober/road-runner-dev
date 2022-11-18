@@ -18,11 +18,10 @@
 {% else %}
     - name: {{ nic['device'] }}
 {% endif %}
-{% if nic['device'].startswith('ibp') %}
+{% elif nic['device'].startswith('ibp') %}
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
-{% endif %}
 {% elif nic['device'].startswith('bond') %}
     interfaces_NetworkBondInterface:
     - name: {{ nic['device'] }}
