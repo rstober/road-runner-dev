@@ -92,6 +92,18 @@ nodes:
         network: internalnet
         mode: 4
         options: miimon=100
+      - device: ibp186s0
+        ip: 10.149.0.16
+        network: ibnet
+      - device: ibp12s0
+        ip: 10.149.1.16
+        network: ibnet
+      - device: ibp75s0
+        ip: 10.149.2.16
+        network: ibnet
+      - device: ibp141s0
+        ip: 10.149.3.16
+        network: ibnet
   # - hostname: dgx02
     # category: dgx
     # clone_from: node01
