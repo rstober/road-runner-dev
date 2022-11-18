@@ -10,6 +10,6 @@
     hostname: {{ item['hostname'] }}
 {% for nic in item['nics'] %}
 
-    "{{ nic }}"
+    "{{ nic['type'] }}"
 
 {% endfor %}
