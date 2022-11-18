@@ -6,7 +6,7 @@
     category: {{ item['category'] }}
     
 {% for nic in item['nics'] %}
-
+{% if nic['ip'] is defined %}
 - name: Configuring NIC {{ nic['device'] }} of node {{ item['hostname'] }}
   brightcomputing.bcm92.physical_node:
     hostname: {{ item['hostname'] }}
@@ -14,5 +14,7 @@
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
-
+{% else %}
+    - name: {{ nic['device'] }}
+{% endif %}
 {% endfor %}
