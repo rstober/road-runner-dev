@@ -5,7 +5,7 @@
     cloneFrom: {{ item['clone_from'] }}
     category: {{ item['category'] }}
     
-- name: Configuring NIC {{ nic['device'] }} of node {{ item['hostname'] }}
+- name: Configuring NICs of node {{ item['hostname'] }}
   brightcomputing.bcm92.physical_node:
     hostname: {{ item['hostname'] }}
 {% for nic in item['nics'] %}
