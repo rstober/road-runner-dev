@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+  gather_facts: true
+
+  tasks:
+
+    - name: Print ansible variables
+      debug:
+        msg: "{{ ansible_facts['interfaces'] }}"
+
+    - name: Print info for each interface
+      debug:
+              msg: "device: {{  ansible_facts[item]['device'] }} mac: {{ ansible_facts[item]['macaddress'] }}"
+      when: "{{ ansible_facts[item]['device'].startswith('enp') or ansible_facts[item]['device'].startswith('ibp') }}"
+      loop: "{{ ansible_facts['interfaces'] }}"
+
