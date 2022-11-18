@@ -75,7 +75,7 @@ nodes:
   - hostname: dgx01
     category: dgx
     clone_from: node01
-    provisionginterface: bond0
+    provisioninginterface: bond0
     nics:
       - device: BOOTIF
         type: 1
