@@ -9,20 +9,7 @@
   brightcomputing.bcm92.physical_node:
     hostname: {{ item['hostname'] }}
 {% for nic in item['nics'] %}
-{% if nic['type'] == 1 %}
-{% if nic['ip'] is defined %}
-    interfaces_NetworkPhysicalInterface:
-    - name: {{ nic['device'] }}
-      ip: {{ nic['ip'] }}
-      network: {{ nic['network'] }}
-{% else %}
-    - name: {{ nic['device'] }}
-{% endif %}
-{% elif nic['type'] == 2 %}
-    interfaces_NetworkBondInterface:
-    - name: {{ nic['device'] }}
-      ip: {{ nic['ip'] }}
-      network: {{ nic['network'] }}
-      interfaces: {{ nic['interfaces'] }}
-{% endif %}
+
+    {{ nic }}
+
 {% endfor %}
