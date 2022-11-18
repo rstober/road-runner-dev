@@ -36,5 +36,5 @@
       
 - name: Remove bootif from node {{ item['hostname'] }} 
   command:
-    cmd: "/cm/local/apps/cmd/bin/cmsh -q -c 'device use {{ item['hostname'] }}; interfaces; remove BOOTIF;'"
+    cmd: "cmsh -c 'device use {{ item['hostname'] }}; interfaces; remove bootif; commit'"
   register: remove_bootif_result
