@@ -89,6 +89,8 @@ nodes:
         interfaces: ['enp225s0f1','enp97s0f1']
         ip: 10.130.122.16
         network: internalnet
+        mode: 4
+        options: miimon=100
   # - hostname: dgx02
     # category: dgx
     # clone_from: node01
