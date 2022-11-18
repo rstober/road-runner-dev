@@ -28,3 +28,15 @@
       options: {{ nic['options'] }}
 {% endif %}
 {% endfor %}
+
+- name: Configure provisioning interface of node {{ item['hostname'] }}
+  brightcomputing.bcm92.physical_node:
+    hostname: {{ item['hostname'] }}
+    provisioningInterface: {{ item['provisioninginterface'] }}
+
+- name: Remove bootif from node {{ item['hostname'] }}
+  brightcomputing.bcm92.physical_node:
+    hostname: {{ item['hostname'] }}
+    interfaces_NetworkPhysicalInterface:
+    - name: bootif
+      state: absent
