@@ -66,7 +66,7 @@ categories:
     clone_from: default
     software_image: dgx-os-5.4-a100-image
     disksetup: dgxa100-disksetup.xml
-  - name: k8s
+  - name: k8s-master
     clone_from: default
     software_image: k8s-master-image
     disksetup: k8s-one-big-partition.xml
@@ -100,92 +100,92 @@ nodes:
       - device: ibp141s0
         ip: 10.149.3.16
         network: ibnet
-  - hostname: dgx02
-    category: dgx
-    clone_from: node01
-    provisioninginterface: bond0
-    nics:
-      - device: bootif
-        ip: 10.130.122.17
-        network: internalnet
-      - device: enp225s0f1
-      - device: enp97s0f1
-      - device: bond0
-        interfaces: ['enp225s0f1','enp97s0f1']
-        ip: 10.130.122.17
-        network: internalnet
-        options: miimon=100
-        mode: 4
-      - device: ibp186s0
-        ip: 10.149.0.17
-        network: ibnet
-      - device: ibp12s0
-        ip: 10.149.1.17
-        network: ibnet
-      - device: ibp75s0
-        ip: 10.149.2.17
-        network: ibnet
-      - device: ibp141s0
-        ip: 10.149.3.17
-        network: ibnet
-  - hostname: dgx03
-    category: dgx
-    clone_from: node01
-    provisioninginterface: bond0
-    nics:
-      - device: bootif
-        ip: 10.130.122.18
-        network: internalnet
-      - device: enp225s0f1
-      - device: enp97s0f1
-      - device: bond0
-        interfaces: ['enp225s0f1','enp97s0f1']
-        ip: 10.130.122.18
-        network: internalnet
-        options: miimon=100
-        mode: 4
-      - device: ibp186s0
-        ip: 10.149.0.18
-        network: ibnet
-      - device: ibp12s0
-        ip: 10.149.1.18
-        network: ibnet
-      - device: ibp75s0
-        ip: 10.149.2.18
-        network: ibnet
-      - device: ibp141s0
-        ip: 10.149.3.18
-        network: ibnet
-  - hostname: dgx04
-    category: dgx
-    clone_from: node01
-    provisioninginterface: bond0
-    nics:
-      - device: bootif
-        ip: 10.130.122.19
-        network: internalnet
-      - device: enp225s0f1
-      - device: enp97s0f1
-      - device: bond0
-        interfaces: ['enp225s0f1','enp97s0f1']
-        ip: 10.130.122.19
-        network: internalnet
-        options: miimon=100
-        mode: 4
-      - device: ibp186s0
-        ip: 10.149.0.19
-        network: ibnet
-      - device: ibp12s0
-        ip: 10.149.1.19
-        network: ibnet
-      - device: ibp75s0
-        ip: 10.149.2.19
-        network: ibnet
-      - device: ibp141s0
-        ip: 10.149.3.19
-        network: ibnet
+  # - hostname: dgx02
+    # category: dgx
+    # clone_from: node01
+    # provisioninginterface: bond0
+    # nics:
+      # - device: bootif
+        # ip: 10.130.122.17
+        # network: internalnet
+      # - device: enp225s0f1
+      # - device: enp97s0f1
+      # - device: bond0
+        # interfaces: ['enp225s0f1','enp97s0f1']
+        # ip: 10.130.122.17
+        # network: internalnet
+        # options: miimon=100
+        # mode: 4
+      # - device: ibp186s0
+        # ip: 10.149.0.17
+        # network: ibnet
+      # - device: ibp12s0
+        # ip: 10.149.1.17
+        # network: ibnet
+      # - device: ibp75s0
+        # ip: 10.149.2.17
+        # network: ibnet
+      # - device: ibp141s0
+        # ip: 10.149.3.17
+        # network: ibnet
+  # - hostname: dgx03
+    # category: dgx
+    # clone_from: node01
+    # provisioninginterface: bond0
+    # nics:
+      # - device: bootif
+        # ip: 10.130.122.18
+        # network: internalnet
+      # - device: enp225s0f1
+      # - device: enp97s0f1
+      # - device: bond0
+        # interfaces: ['enp225s0f1','enp97s0f1']
+        # ip: 10.130.122.18
+        # network: internalnet
+        # options: miimon=100
+        # mode: 4
+      # - device: ibp186s0
+        # ip: 10.149.0.18
+        # network: ibnet
+      # - device: ibp12s0
+        # ip: 10.149.1.18
+        # network: ibnet
+      # - device: ibp75s0
+        # ip: 10.149.2.18
+        # network: ibnet
+      # - device: ibp141s0
+        # ip: 10.149.3.18
+        # network: ibnet
+  # - hostname: dgx04
+    # category: dgx
+    # clone_from: node01
+    # provisioninginterface: bond0
+    # nics:
+      # - device: bootif
+        # ip: 10.130.122.19
+        # network: internalnet
+      # - device: enp225s0f1
+      # - device: enp97s0f1
+      # - device: bond0
+        # interfaces: ['enp225s0f1','enp97s0f1']
+        # ip: 10.130.122.19
+        # network: internalnet
+        # options: miimon=100
+        # mode: 4
+      # - device: ibp186s0
+        # ip: 10.149.0.19
+        # network: ibnet
+      # - device: ibp12s0
+        # ip: 10.149.1.19
+        # network: ibnet
+      # - device: ibp75s0
+        # ip: 10.149.2.19
+        # network: ibnet
+      # - device: ibp141s0
+        # ip: 10.149.3.19
+        # network: ibnet
   - hostname: knode01
-    category: k8s
+    category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
     nics:
@@ -201,7 +201,7 @@ nodes:
         options: miimon=100
         mode: 4
   - hostname: knode02
-    category: k8s
+    category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
     nics:
@@ -217,7 +217,7 @@ nodes:
         options: miimon=100
         mode: 4
   - hostname: knode03
-    category: k8s
+    category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
     nics:
