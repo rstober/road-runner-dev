@@ -21,6 +21,8 @@ license:
   locality: 'Santa Clara'
   organization: NVIDIA
   department: MLOPs
+  primaryheadnodemac: 04:3f:72:d0:96:c3
+  secondaryheadnodemac: 04:3f:72:e7:67:07
 
 networks:
   - name: ibnet
