@@ -22,6 +22,14 @@
 {% else %}
     - name: {{ nic['device'] }}
 {% endif %}
+{% elif nic['device'].startswith('ens') %}
+{% if nic['ip'] is defined %}
+    - name: {{ nic['device'] }}
+      ip: {{ nic['ip'] }}
+      network: {{ nic['network'] }}
+{% else %}
+    - name: {{ nic['device'] }}
+{% endif %}
 {% elif nic['device'].startswith('ibp') %}
 {% if nic['ip'] is defined %}
     - name: {{ nic['device'] }}
