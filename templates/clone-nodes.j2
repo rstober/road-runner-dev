@@ -10,7 +10,11 @@
     hostname: {{ item['hostname'] }}
     interfaces_NetworkPhysicalInterface:
 {% for nic in item['nics'] %}
-{% if nic['device'].startswith('enp') %}
+{% if nic['device'].startswith('bootif') %}
+    - name: {{ nic['device'] }}
+      ip: {{ nic['ip'] }}
+      network: {{ nic['network'] }}
+{% elif nic['device'].startswith('enp') %}
 {% if nic['ip'] is defined %}
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
@@ -19,9 +23,13 @@
     - name: {{ nic['device'] }}
 {% endif %}
 {% elif nic['device'].startswith('ibp') %}
+{% if nic['ip'] is defined %}
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
+{% else %}
+    - name: {{ nic['device'] }}
+{% endif %}
 {% endif %}
 {% endfor %}
 
