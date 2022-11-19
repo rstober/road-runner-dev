@@ -7,4 +7,4 @@
 
 - name: Wait until initrd is generated
   wait_for:
-    path: "{{ item['path'] }}/boot/initrd-{{ item['kernel_release'] }}"  
+    path: "{{ item['path'] }}/boot/initrd.cm.img-{{ item['kernel_release'] }}"  
