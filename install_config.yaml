@@ -105,7 +105,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
+      - device: bootif
         ip: 10.130.122.17
         network: internalnet
       - device: enp225s0f1
@@ -133,7 +133,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
+      - device: bootif
         ip: 10.130.122.18
         network: internalnet
       - device: enp225s0f1
@@ -161,7 +161,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
+      - device: bootif
         ip: 10.130.122.19
         network: internalnet
       - device: enp225s0f1
@@ -189,7 +189,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
+      - device: bootif
         ip: 10.130.122.20
         network: internalnet
       - device: ens1f1np1
@@ -205,7 +205,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
+      - device: bootif
         ip: 10.130.122.21
         network: internalnet
       - device: ens1f1np1
@@ -221,7 +221,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
+      - device: bootif
         ip: 10.130.122.22
         network: internalnet
       - device: ens1f1np1
