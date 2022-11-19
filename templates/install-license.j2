@@ -11,8 +11,8 @@
       -ou {{ ansible_local['custom']['license']['department'] }} 
       -cn {{ ansible_local['custom']['license']['clustername'] }} 
       -f
-      -m 
-      -M
+      -m {{ ansible_local['custom']['license']['primaryheadnodemac'] }}
+      -M  {{ ansible_local['custom']['license']['secondaryheadnodemac'] }}
     args:
       executable: /bin/bash
     register: request_license_output
