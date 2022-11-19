@@ -14,13 +14,13 @@ apps:
   disabled: yes
 
 license:
-  - clustername: 'DGX BasePod'
-    productkey: 128834-679610-302892-882261-962425
-    country: US
-    state: California
-    locality: 'Santa Clara'
-    organization: NVIDIA
-    department: MLOPs
+  clustername: 'DGX BasePod'
+  productkey: 128834-679610-302892-882261-962425
+  country: US
+  state: California
+  locality: 'Santa Clara'
+  organization: NVIDIA
+  department: MLOPs
 
 networks:
   - name: ibnet
