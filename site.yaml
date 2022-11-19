@@ -5,10 +5,10 @@
 
 - hosts: localhost
   roles:
-    #- networks
-    #- software_images
-    #- updates
-    #- categories
+    - networks
+    - software_images
+    - updates
+    - categories
     - nodes
     #- packages
     #- kubernetes
