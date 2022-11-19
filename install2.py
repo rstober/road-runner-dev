@@ -117,6 +117,9 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     config = yaml.safe_load(stream)
     
+    print ("Value : %s" %  config.keys())
+    sys.exit("exiting")
+    
     # create the ansible facts.d directory
     createDirectoryPath('/etc/ansible/facts.d')
     
@@ -131,7 +134,7 @@ if __name__ == '__main__':
     os.system("ansible-galaxy collection install brightcomputing.bcm92")
     
     # create an ansible roles directory for each role
-    roles = list(("networks", "updates", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
+    roles = list(("license", "networks", "updates", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
     for role in roles:
         os.system("ansible-galaxy init --init-path roles/ %s" % role)
    
@@ -147,6 +150,12 @@ if __name__ == '__main__':
     shutil.copyfile('ansible.cfg', '/root/.ansible.cfg')
     
     printBanner('Preparing playbooks')
+    
+    if "license" in config:
+    
+        shutil.copyfile("default-ansible-vars", install_dir + "/roles/license/vars/main.yml")
+        
+        os.system('ansible-playbook -ilocalhost, install-license.yml')
         
     if "software_images" in config:
         
