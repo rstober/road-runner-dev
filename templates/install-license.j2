@@ -1,0 +1,23 @@
+    
+  - name: Rename node01 to template
+    shell: >
+      /cm/local/apps/cmd/sbin/request-license
+      -n 
+      -k {{ ansible_local['custom']['license']['productkey'] }} 
+      -c {{ ansible_local['custom']['license']['country'] }} 
+      -s {{ ansible_local['custom']['license']['state'] }} 
+      -l {{ ansible_local['custom']['license']['locality'] }} 
+      -o {{ ansible_local['custom']['license']['organization'] }} 
+      -ou {{ ansible_local['custom']['license']['department'] }} 
+      -cn {{ ansible_local['custom']['license']['clustername'] }} 
+      -f
+      -m 
+      -M
+    args:
+      executable: /bin/bash
+    register: request_license_output
+    ignore_errors: true
+
+  - name: print request-license info
+    debug: 
+      msg: "{{ request_license_info }"
