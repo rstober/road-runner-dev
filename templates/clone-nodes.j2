@@ -11,7 +11,7 @@
     interfaces_NetworkPhysicalInterface:
 {% for nic in item['nics'] %}
 {% if nic['device'].startswith('bootif') %}
-    - name: {{ nic['device'] }}
+    - name: {{ nic['device'] | upper }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
 {% elif nic['device'].startswith('enp') %}
