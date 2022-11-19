@@ -13,5 +13,5 @@
       ansible.builtin.blockinfile:
         insertafter: EOF
         path: "{{ ansible_local['custom']['install_dir'] }}/roles/license/tasks/main.yml" 
-        block: "{{ lookup('template', 'templates/install-license.j2') }}"
+        block: "{{ lookup('template', 'templates/install-license2.j2') }}"
         marker: ""
