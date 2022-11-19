@@ -9,28 +9,35 @@
   brightcomputing.bcm92.physical_node:
     hostname: {{ item['hostname'] }}
 {% for nic in item['nics'] %}
-{% if nic['device'].startswith('enp') %}
-{% if nic['ip'] is defined %}
+    {% if nic['device'].startswith('enp') %}
+        {% if nic['ip'] is defined %}
     interfaces_NetworkPhysicalInterface:
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
-{% else %}
+        {% else %}
     - name: {{ nic['device'] }}
-{% endif %}
-{% elif nic['device'].startswith('ibp') %}
+        {% endif %}
+    {% elif nic['device'].startswith('ibp') %}
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
-{% elif nic['device'].startswith('bond') %}
+    {% endif %}
+{% endfor %}
+
+- name: Configuring NICs of node {{ item['hostname'] }}
+  brightcomputing.bcm92.physical_node:
+    hostname: {{ item['hostname'] }}
     interfaces_NetworkBondInterface:
+{% for nic in item['nics'] %}
+    {% if nic['device'].startswith('bond') %}
     - name: {{ nic['device'] }}
       ip: {{ nic['ip'] }}
       network: {{ nic['network'] }}
       interfaces: {{ nic['interfaces'] }}
       mode: {{ nic['mode'] }}
       options: {{ nic['options'] }}
-{% endif %}
+    {% endif %}
 {% endfor %}
 
 - name: Configure provisioning interface of node {{ item['hostname'] }}
