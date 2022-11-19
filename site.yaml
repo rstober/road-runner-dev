@@ -5,11 +5,12 @@
 
 - hosts: localhost
   roles:
-    - networks
-    - software_images
-    - updates
-    - categories
-    - nodes
+    - license
+    #- networks
+    #- software_images
+    #- updates
+    #- categories
+    #- nodes
     #- packages
     #- kubernetes
     #- wlms
