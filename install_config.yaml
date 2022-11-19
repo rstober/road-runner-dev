@@ -77,20 +77,15 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     nics:
-      - device: BOOTIF
-        type: 1
+      - device: bootif
         ip: 10.130.122.16
         network: internalnet
       - device: enp225s0f1
-        type: 1
       - device: enp97s0f1
-        type: 1
       - device: bond0
-        type: 2
         interfaces: ['enp225s0f1','enp97s0f1']
         ip: 10.130.122.16
         network: internalnet
-        mode: 4
         options: miimon=100
       - device: ibp186s0
         ip: 10.149.0.16
