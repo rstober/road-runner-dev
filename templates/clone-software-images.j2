@@ -8,4 +8,4 @@
 - name: Wait until initrd.cm.img-{{ item['kernel_release'] }} to be generated
   ansible.builtin.wait_for:
     path: /var/log/cmdaemon
-    search_regex: Successfully created ramdisk {{ item['path'] }}/boot/initrd.cm.img-{{ item['kernel_release'] }}
+    search_regex: Successfully created ramdisk {{ item['path'] }}/boot/initrd-{{ item['kernel_release'] }}
