@@ -3,10 +3,6 @@
   ansible.builtin.stat:
     path: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log
   register: check_file_name
-  
-- name: print debug
-  ansible.builtin.debug:
-    var: check_file_name
     
 - name: Backup /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log to /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log.sav
   ansible.builtin.copy:
