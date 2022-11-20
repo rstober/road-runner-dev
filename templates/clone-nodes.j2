@@ -77,3 +77,8 @@
   command:
     cmd: "cmsh -c 'device use {{ item['hostname'] }}; interfaces; remove bootif; commit'"
   register: remove_bootif_result
+  
+- name: Clear MAC address from node {{ item['hostname'] }} 
+  command:
+    cmd: "cmsh -c 'device use {{ item['hostname'] }}; clear mac; commit'"
+  register: clear_mac_result
