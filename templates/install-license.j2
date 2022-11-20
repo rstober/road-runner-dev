@@ -1,5 +1,5 @@
     
-  - name: Rename node01 to template
+  - name: install cluster license
     shell: >
       /cm/local/apps/cmd/sbin/request-license
       -n 
@@ -17,7 +17,3 @@
       executable: /bin/bash
     register: request_license_output
     ignore_errors: true
-
-  - name: print request-license info
-    debug: 
-      msg: request_license_output
