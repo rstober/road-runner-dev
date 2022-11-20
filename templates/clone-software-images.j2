@@ -10,7 +10,6 @@
     
 - name: Backup /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log to /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log.sav
   ansible.builtin.copy:
-    remote_src: true
     src: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log
     dest: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log.sav
   when: check_file_name.stat.exists
