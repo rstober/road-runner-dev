@@ -91,6 +91,9 @@ nodes:
       - device: bootif
         ip: 10.130.122.16
         network: internalnet
+      - device: ipmi0
+        ip: 10.130.111.71
+        network: ipminet
       - device: enp225s0f1
       - device: enp97s0f1
       - device: bond0
@@ -119,6 +122,9 @@ nodes:
       # - device: bootif
         # ip: 10.130.122.17
         # network: internalnet
+      # - device: ipmi0
+        # ip: 10.130.111.69
+        # network: ipminet
       # - device: enp225s0f1
       # - device: enp97s0f1
       # - device: bond0
@@ -147,6 +153,9 @@ nodes:
       # - device: bootif
         # ip: 10.130.122.18
         # network: internalnet
+      # - device: ipmi0
+        # ip: 10.130.111.70
+        # network: ipminet
       # - device: enp225s0f1
       # - device: enp97s0f1
       # - device: bond0
@@ -175,6 +184,9 @@ nodes:
       # - device: bootif
         # ip: 10.130.122.19
         # network: internalnet
+      # - device: ipmi0
+        # ip: 10.130.111.68
+        # network: ipminet
       # - device: enp225s0f1
       # - device: enp97s0f1
       # - device: bond0
@@ -203,6 +215,9 @@ nodes:
       - device: bootif
         ip: 10.130.122.20
         network: internalnet
+      - device: ipmi0
+        ip: 10.130.111.72
+        network: ipminet
       - device: ens1f1np1
       - device: ens2f1np1
       - device: bond0
@@ -219,6 +234,9 @@ nodes:
       - device: bootif
         ip: 10.130.122.21
         network: internalnet
+      - device: ipmi0
+        ip: 10.130.111.73
+        network: ipminet
       - device: ens1f1np1
       - device: ens2f1np1
       - device: bond0
@@ -235,6 +253,9 @@ nodes:
       - device: bootif
         ip: 10.130.122.22
         network: internalnet
+      - device: ipmi0
+        ip: 10.130.111.74
+        network: ipminet
       - device: ens1f1np1
       - device: ens2f1np1
       - device: bond0
