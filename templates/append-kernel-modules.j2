@@ -23,6 +23,11 @@
   brightcomputing.bcm92.software_image:
     name: {{ image.name }}
     modules: {{ im.modules + image.modules }}
+    
+- name: Wait until initrd-{{ image['kernel_release'] }} to be generated
+  ansible.builtin.wait_for:
+    path: /var/spool/cmd/ramdisk/image-{{ image['name'] }}.log
+    search_regex: Done
 
 {% elif image.name == image.backup and loop.last %}
 - name: Check if /var/spool/cmd/ramdisk/image-{{ image['name'] }}.log exists
@@ -46,6 +51,11 @@
   brightcomputing.bcm92.software_image:
     name: {{ image.name }}
     modules: {{ images_need_modules[0]['modules'] + image.modules }}
+
+- name: Wait until initrd-{{ image['kernel_release'] }} to be generated
+  ansible.builtin.wait_for:
+    path: /var/spool/cmd/ramdisk/image-{{ image['name'] }}.log
+    search_regex: Done
 
 {% endif %}
 {% endif %}
