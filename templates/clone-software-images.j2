@@ -1,4 +1,26 @@
 
+- name: Check if /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log exists
+  ansible.builtin.stat:
+    path: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log
+  register: check_file_name
+  
+- name: print debug
+  ansible.builtin.debug:
+    var: check_file_name
+    
+- name: Backup /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log to /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log.sav
+  ansible.builtin.copy:
+    remote_src: true
+    src: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log
+    dest: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log.sav
+  when: check_file_name.stat.exists
+  
+- name: Remove old file
+  ansible.builtin.file:
+    path: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log
+    state: absent
+  when: check_file_name.stat.exists
+
 - name: creating the {{ item['backup'] }} software image from the {{ item['clone_from'] }} image
   brightcomputing.bcm92.software_image:
     name: {{ item['backup'] }}
@@ -7,5 +29,5 @@
     
 - name: Wait until initrd.cm.img-{{ item['kernel_release'] }} to be generated
   ansible.builtin.wait_for:
-    path: /var/log/cmdaemon
-    search_regex: Successfully created ramdisk {{ item['path'] }}/boot/initrd-{{ item['kernel_release'] }}
+    path: /var/spool/cmd/ramdisk/image-{{ item['backup'] }}.log
+    search_regex: Done
