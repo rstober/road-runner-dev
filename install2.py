@@ -117,9 +117,6 @@ if __name__ == '__main__':
     stream = open('install_config.yaml', 'r')
     config = yaml.safe_load(stream)
     
-    # print ("Value : %s" %  config.keys())
-    # sys.exit("exiting")
-    
     # create the ansible facts.d directory
     createDirectoryPath('/etc/ansible/facts.d')
     
