@@ -72,6 +72,11 @@
   brightcomputing.bcm92.physical_node:
     hostname: {{ item['hostname'] }}
     provisioningInterface: {{ item['provisioninginterface'] }}
+    
+- name: Setting provisioning interface of node {{ item['hostname'] }} to {{ item['provisioninginterface'] }}
+  brightcomputing.bcm92.physical_node:
+    hostname: {{ item['hostname'] }}
+    mac: {{ item['provisioningmac'] }}
       
 - name: Remove bootif from node {{ item['hostname'] }} 
   command:
