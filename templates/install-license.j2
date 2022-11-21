@@ -17,3 +17,9 @@
       executable: /bin/bash
     register: request_license_output
     ignore_errors: true
+    
+  - name: Ensure SELinux is set to enforcing mode
+    ansible.builtin.lineinfile:
+      path: /cm/local/apps/cmd/etc/cmd.conf
+      regexp: '^# AdvancedConfig'
+      line: 'AdvancedConfig = { "DeviceResolveAnyMAC=1" }'

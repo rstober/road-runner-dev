@@ -1,0 +1,13 @@
+    
+  - name: install cluster license
+    shell: >
+      /cm/local/apps/ipmitool/1.8.18/ipmitool  
+      -I lanplus 
+      -H {{ item['provisioningmac'] }}
+      -U {{ ansible_local['custom']['ipmiuser'] }}
+      -P {{ ansible_local['custom']['ipmipass'] }}
+      power on
+    args:
+      executable: /bin/bash
+    register: ipmitool_output
+    ignore_errors: true
