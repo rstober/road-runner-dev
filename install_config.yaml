@@ -102,7 +102,7 @@ nodes:
       - device: enp225s0f1np1
       - device: enp97s0f1np1
       - device: bond0
-        interfaces: ['enp225s0f1','enp97s0f1']
+        interfaces: ['enp225s0f1','enp97s0f1','enp225s0f1np1','enp97s0f1np1']
         ip: 10.130.122.16
         network: internalnet
         options: miimon=100
