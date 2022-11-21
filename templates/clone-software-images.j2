@@ -30,6 +30,6 @@
 {% if item['packages'] is not none %}
 - name: Install {{ item['packages'] | join(' ') }} into {{ item['name'] }} software image
   command:
-    cmd: "chroot {{ item['name'] }} /bin/bash -c 'apt update; apt install -y {{ item['packages'] | join(' ') }}'"
+    cmd: "chroot /cm/images/{{ item['name'] }} /bin/bash -c 'apt update; apt install -y {{ item['packages'] | join(' ') }}'"
   register: install_packages_result
 {% endif %}
