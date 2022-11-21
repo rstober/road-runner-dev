@@ -77,8 +77,13 @@
   brightcomputing.bcm92.physical_node:
     hostname: {{ item['hostname'] }}
     mac: {{ item['provisioningmac'] }}
+    
+- name: Set powerControl of node {{ item['hostname'] }} to {{ item['powercontrol'] }}
+  brightcomputing.bcm92.physical_node:
+    hostname: {{ item['hostname'] }}
+    powerControl: {{ item['powercontrol'] }}
       
-- name: Remove bootif from node {{ item['hostname'] }} 
+- name: Remove bootif interface from node {{ item['hostname'] }} 
   command:
     cmd: "cmsh -c 'device use {{ item['hostname'] }}; interfaces; remove bootif; commit'"
   register: remove_bootif_result
