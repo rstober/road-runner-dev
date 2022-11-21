@@ -24,6 +24,11 @@
     name: {{ image.name }}
     modules: {{ im.modules + image.modules }}
     
+- name: Create ram disk for {{ image['name'] }} software image
+  command:
+    cmd: "cmsh -c 'softwareimage; createramdisk {{ image['name'] }}'"
+  register: remove_bootif_result
+    
 - name: Wait until initrd-{{ image['kernel_release'] }} to be generated
   ansible.builtin.wait_for:
     path: /var/spool/cmd/ramdisk/image-{{ image['name'] }}.log
@@ -51,6 +56,11 @@
   brightcomputing.bcm92.software_image:
     name: {{ image.name }}
     modules: {{ images_need_modules[0]['modules'] + image.modules }}
+    
+- name: Create ram disk for image {{ image['name'] }} 
+  command:
+    cmd: "cmsh -c 'softwareimage; createramdisk {{ image['name'] }}'"
+  register: remove_bootif_result
 
 - name: Wait until initrd-{{ image['kernel_release'] }} to be generated
   ansible.builtin.wait_for:
