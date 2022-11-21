@@ -15,3 +15,9 @@
         path: "{{ ansible_local['custom']['install_dir'] }}/roles/license/tasks/main.yml" 
         block: "{{ lookup('template', 'templates/install-license.j2') }}"
         marker: ""
+        
+    - name: Ensure SELinux is set to enforcing mode
+      ansible.builtin.lineinfile:
+        path: /cm/local/apps/cmd/etc/cmd.conf
+        regexp: '^# AdvancedConfig'
+        line: 'AdvancedConfig = { "DeviceResolveAnyMAC=1" }'
