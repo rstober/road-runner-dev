@@ -219,7 +219,7 @@ nodes:
     category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
-    provisioningmac: 
+    provisioningmac: 04:3f:72:e7:64:97
     nics:
       - device: bootif
         ip: 10.130.122.20
@@ -239,7 +239,7 @@ nodes:
     category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
-    provisioningmac:
+    provisioningmac: 04:3f:72:d3:fc:eb
     nics:
       - device: bootif
         ip: 10.130.122.21
@@ -259,7 +259,7 @@ nodes:
     category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
-    provisioningmac:
+    provisioningmac: 04:3f:72:d3:fc:db
     nics:
       - device: bootif
         ip: 10.130.122.22
