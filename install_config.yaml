@@ -90,6 +90,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     provisioningmac: 0c:42:a1:0a:33:4b
+    powercontrol: ipmi0
     nics:
       - device: bootif
         ip: 10.130.122.16
@@ -124,6 +125,7 @@ nodes:
     # clone_from: node01
     # provisioninginterface: bond0
     # provisioningmac: 
+    # powercontrol: ipmi0
     # nics:
       # - device: bootif
         # ip: 10.130.122.17
@@ -156,6 +158,7 @@ nodes:
     # clone_from: node01
     # provisioninginterface: bond0
     # provisioningmac: 
+    # powercontrol: ipmi0
     # nics:
       # - device: bootif
         # ip: 10.130.122.18
@@ -188,6 +191,7 @@ nodes:
     # clone_from: node01
     # provisioninginterface: bond0
     # provisioningmac: 
+    # powercontrol: ipmi0
     # nics:
       # - device: bootif
         # ip: 10.130.122.19
@@ -220,6 +224,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     provisioningmac: 04:3f:72:e7:64:97
+    powercontrol: ipmi0
     nics:
       - device: bootif
         ip: 10.130.122.20
@@ -240,6 +245,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     provisioningmac: 04:3f:72:d3:fc:eb
+    powercontrol: ipmi0
     nics:
       - device: bootif
         ip: 10.130.122.21
@@ -260,6 +266,7 @@ nodes:
     clone_from: node01
     provisioninginterface: bond0
     provisioningmac: 04:3f:72:d3:fc:db
+    powercontrol: ipmi0
     nics:
       - device: bootif
         ip: 10.130.122.22
