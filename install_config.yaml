@@ -9,6 +9,8 @@ template_node: node01
 template_ip: 10.130.122.250
 template_name: template
 template_nic: bootif
+ipmiuser: apollo
+ipmipass: Buynvidia2021
 
 apps:
   disabled: yes
@@ -87,6 +89,7 @@ nodes:
     category: dgx
     clone_from: node01
     provisioninginterface: bond0
+    provisioningmac: 0c:42:a1:0a:33:4b
     nics:
       - device: bootif
         ip: 10.130.122.16
@@ -118,6 +121,7 @@ nodes:
     # category: dgx
     # clone_from: node01
     # provisioninginterface: bond0
+    # provisioningmac: 
     # nics:
       # - device: bootif
         # ip: 10.130.122.17
@@ -149,6 +153,7 @@ nodes:
     # category: dgx
     # clone_from: node01
     # provisioninginterface: bond0
+    # provisioningmac: 
     # nics:
       # - device: bootif
         # ip: 10.130.122.18
@@ -180,6 +185,7 @@ nodes:
     # category: dgx
     # clone_from: node01
     # provisioninginterface: bond0
+    # provisioningmac: 
     # nics:
       # - device: bootif
         # ip: 10.130.122.19
@@ -211,6 +217,7 @@ nodes:
     category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
+    provisioningmac: 
     nics:
       - device: bootif
         ip: 10.130.122.20
@@ -230,6 +237,7 @@ nodes:
     category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
+    provisioningmac:
     nics:
       - device: bootif
         ip: 10.130.122.21
@@ -249,6 +257,7 @@ nodes:
     category: k8s-master
     clone_from: node01
     provisioninginterface: bond0
+    provisioningmac:
     nics:
       - device: bootif
         ip: 10.130.122.22
