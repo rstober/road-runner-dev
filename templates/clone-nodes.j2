@@ -73,10 +73,15 @@
     hostname: {{ item['hostname'] }}
     provisioningInterface: {{ item['provisioninginterface'] }}
     
+#- name: Setting MAC address of node {{ item['hostname'] }} to {{ item['provisioningmac'] }}
+#  brightcomputing.bcm92.physical_node:
+#    hostname: {{ item['hostname'] }}
+#    mac: {{ item['provisioningmac'] }}
+    
 - name: Setting MAC address of node {{ item['hostname'] }} to {{ item['provisioningmac'] }}
-  brightcomputing.bcm92.physical_node:
-    hostname: {{ item['hostname'] }}
-    mac: {{ item['provisioningmac'] }}
+  command:
+    cmd: "cmsh -c 'device use {{ item['hostname'] }}; set mac {{ item['provisioningmac'] }}; commit'"
+  register: set_mac_address_result
     
 - name: Set powerControl of node {{ item['hostname'] }} to {{ item['powercontrol'] }}
   brightcomputing.bcm92.physical_node:
