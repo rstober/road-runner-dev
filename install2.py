@@ -175,7 +175,7 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, clone-nodes.yml')
         
-        #os.system('ansible-playbook -ilocalhost, power-on-nodes.yml')
+        os.system('ansible-playbook -ilocalhost, power-on-nodes.yml')
         
     if "networks" in config:
         
