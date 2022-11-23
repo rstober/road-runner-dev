@@ -1,16 +1,16 @@
 {% for nic in item.nics %}
 {% if nic['device'].startswith('ipmi') %}
 - name: Power on node {{ item['hostname'] }}
-shell: >
+  shell: >
   /cm/local/apps/ipmitool/1.8.18/ipmitool
   -I lanplus
   -H {{ nic['ip'] }}
   -U {{ ansible_local['custom']['ipmiuser'] }}
   -P {{ ansible_local['custom']['ipmipass'] }}
   power on
-args:
-  executable: /bin/bash
-register: ipmitool_output
-ignore_errors: true
+  args:
+    executable: /bin/bash
+  register: ipmitool_output
+  ignore_errors: true
 {% endif %}
 {% endfor %}
