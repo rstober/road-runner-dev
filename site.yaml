@@ -5,17 +5,18 @@
 
 - hosts: localhost
   roles:
-    - license
-    - networks
-    - software_images
-    - categories
-    - nodes
+    #- license
+    # - networks
+    # - software_images
+    # - categories
+    # - nodes
     #- packages
     #- kubernetes
     #- wlms
     #- autoscaler
     #- csps
     #- jupyter
-    - users
+    #- users
+    - power
     #- apps
     
