@@ -1,7 +1,7 @@
 {% for bnode in all_nodes.physical_nodes %}
 {% if bnode.hostname == node.hostname %} 
 - set_fact:
-    softwareimage: {{ bnode.category.softwareImageProxy.parentSoftwareImage.name }}"
+    softwareimage: "{{ bnode.category.softwareImageProxy.parentSoftwareImage.name }}"
     
 - name: Grab image from {{ bnode.hostname }} to {{ softwareimage }}
     ansible.builtin.shell: 'cmsh -c "device use {{ bnode.hostname }}; grabimage -i {{ softwareimage }} -w --wait"'
