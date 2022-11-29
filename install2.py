@@ -172,7 +172,7 @@ if __name__ == '__main__':
     if "nodes" in config:
     
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/nodes/vars/main.yml")
-         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/power/vars/main.yml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/power/vars/main.yml")
         
         os.system('ansible-playbook -ilocalhost, clone-nodes.yml')
         
