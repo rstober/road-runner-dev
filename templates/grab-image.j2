@@ -1,7 +1,3 @@
-
-- name: register all physical_nodes
-  register: all_nodes
-  brightcomputing.bcm92.physical_node_info: {}
   
 {% for node in ansible_local['custom']['nodes'] %}
 {% if node['hostname'] | regex_search('01$') %}
