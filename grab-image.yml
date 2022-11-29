@@ -20,4 +20,5 @@
         block: "{{ lookup('template', 'templates/grab-image.j2') }}"
         marker: ""
       loop: "{{ ansible_local['custom']['nodes'] | selectattr('updatenode', 'equalto', True) | list }}"
+      loop_control:
         loop_var: node
