@@ -4,7 +4,6 @@
   brightcomputing.bcm92.physical_node_info: {}
   
 {% for node in ansible_local['custom']['nodes'] %}
-{% set i = 0 %}
 {% if node['hostname'] | regex_search('01$') %}
 - name: Display node details
   debug:
