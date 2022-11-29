@@ -13,7 +13,7 @@
     - 'cluster name: {{item.partition.clusterName}}'
     - 'software image: {{ item.softwareImageProxy }}'
     - '{{item.interfaces[0].name}}: {{item.interfaces[0].ip}}@{{ item.interfaces[0].network.name }}'
-  loop: '{{ all_nodes.physical_nodes }}'
+  loop: '{{ all_nodes }}'
   loop_control:
     label: '{{ item.hostname }}'
   
