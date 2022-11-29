@@ -1,17 +1,17 @@
   
-{% for node in ansible_local['custom']['nodes'] %}
-{% if node['hostname'] | regex_search('01$') %}
+{% for bnode in all_nodes.physical_nodes %}
+{% if bnode.hostname == node.hostname %}
 - name: Display node details
   debug:
     msg: 
-    - "hostname: {{ node['hostname'] }}"
+    - "hostname: {{ node.hostname }}"
 
 - name: Display node details
   debug:
     msg:
-    - "hostname: {{ all_nodes.physical_nodes[0].hostname }}"
-    - "category: {{ all_nodes.physical_nodes[0].category.name }}"
-    - "software image: {{ all_nodes.physical_nodes[0].category.softwareImageProxy.parentSoftwareImage.name }}"
+    - "hostname: {{ bnode.hostname }}"
+    - "category: {{ bnode.category.name }}"
+    - "software image: {{ bnode.category.softwareImageProxy.parentSoftwareImage.name }}"
 
 {% endif %}
 {% endfor %}
