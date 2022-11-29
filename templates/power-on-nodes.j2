@@ -20,10 +20,3 @@
   ignore_errors: true
 {% endif %}
 {% endfor %}
-  
-- name: Retry a task until a certain condition is met
-  ansible.builtin.shell: cmsh -c "device status {{ item['hostname'] }}"
-  register: result
-  until: result.stdout.find("UP") != -1
-  retries: 20
-  delay: 60
