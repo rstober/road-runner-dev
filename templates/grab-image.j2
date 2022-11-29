@@ -12,7 +12,7 @@
     - "software image: {{ node.category.softwareImageProxy.parentSoftwareImage.name }}"
   loop: '{{ all_nodes.physical_nodes }}'
   loop_control:
-    label: '{{ node.hostname }}'
+    #label: '{{ node.hostname }}'
     loop_var: node
 {% endif %}
   
