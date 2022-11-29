@@ -4,17 +4,17 @@
   brightcomputing.bcm92.physical_node_info: {}
   
 {% for node in ansible_local['custom']['nodes'] %}
-
+{% set i = 0 %}
 {% if node['hostname'] | regex_search('01$') %}
 - name: Display node details
   debug:
     msg:
-    - "hostname: {{ all_nodes.physical_nodes[i].hostname }}"
-    - "category: {{ all_nodes.physical_nodes[i].category.name }}"
-    - "software image: {{ all_nodes.physical_nodes[i].category.softwareImageProxy.parentSoftwareImage.name }}"
+    - "hostname: {{ item.hostname }}"
+    - "category: {{ item.category.name }}"
+    - "software image: {{ item.category.softwareImageProxy.parentSoftwareImage.name }}"
   loop: '{{ all_nodes.physical_nodes }}'
   loop_control:
-    index_var: i
+    label: '{{ item.hostname }}'
 {% endif %}
 
 {% endfor %}
