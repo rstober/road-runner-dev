@@ -10,9 +10,5 @@
     retries: 6
     delay: 10
     ignore_errors: true
-    
-- name: Print grab image output
-  debug:
-    msg: "stdout: {{ grab_image_output.stdout }}"
 {% endif %}
 {% endfor %}
