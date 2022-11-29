@@ -7,12 +7,13 @@
 - name: Display node details
   debug:
     msg:
-    - "hostname: {{item.hostname}}"
-    - "category: {{item.category.name}}"
-    - "software image: {{ item.category.softwareImageProxy.parentSoftwareImage.name }}"
+    - "hostname: {{node.hostname}}"
+    - "category: {{node.category.name}}"
+    - "software image: {{ node.category.softwareImageProxy.parentSoftwareImage.name }}"
   loop: '{{ all_nodes.physical_nodes }}'
   loop_control:
-    label: '{{ item.hostname }}'
+    label: '{{ node.hostname }}'
+    loop_var: node
 {% endif %}
   
 #- name: Grab image from {{ item['hostname'] }} to {{ item['softwareimage'] }}
