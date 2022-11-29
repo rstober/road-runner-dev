@@ -8,6 +8,10 @@
       ansible.builtin.file:
         path: "{{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml"
         state: touch
+        
+    - name: register all physical_nodes
+      register: all_nodes
+      brightcomputing.bcm92.physical_node_info: {}
       
     - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml
       ansible.builtin.blockinfile:

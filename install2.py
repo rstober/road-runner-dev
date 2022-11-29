@@ -131,7 +131,7 @@ if __name__ == '__main__':
     os.system("ansible-galaxy collection install brightcomputing.bcm92")
     
     # create an ansible roles directory for each role
-    roles = list(("power", "license", "networks", "updates", "software_images", "categories", "kubernetes", "nodes", "packages", "csps", "users", "wlms", "autoscaler", "jupyter", "apps"))
+    roles = list(("power", "license", "networks", "software_images", "categories", "nodes", "users"))
     for role in roles:
         os.system("ansible-galaxy init --init-path roles/ %s" % role)
    
