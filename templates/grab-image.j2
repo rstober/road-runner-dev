@@ -2,19 +2,22 @@
 - name: register all physical_nodes
   register: all_nodes
   brightcomputing.bcm92.physical_node_info: {}
+  
+{% for node in ansible_local['custom']['nodes'] %}
 
-{% if item['hostname'] | regex_search('01$') %}
+{% if node['hostname'] | regex_search('01$') %}
 - name: Display node details
   debug:
     msg:
-    - "hostname: {{node.hostname}}"
-    - "category: {{node.category.name}}"
-    - "software image: {{ node.category.softwareImageProxy.parentSoftwareImage.name }}"
+    - "hostname: {{ all_nodes.physical_nodes[i].hostname }}"
+    - "category: {{ all_nodes.physical_nodes[i].category.name }}"
+    - "software image: {{ all_nodes.physical_nodes[i].category.softwareImageProxy.parentSoftwareImage.name }}"
   loop: '{{ all_nodes.physical_nodes }}'
   loop_control:
-    #label: '{{ node.hostname }}'
-    loop_var: node
+    index_var: i
 {% endif %}
+
+{% endfor %}
   
 #- name: Grab image from {{ item['hostname'] }} to {{ item['softwareimage'] }}
 #  ansible.builtin.shell: 'cmsh -c "device use {{ item['hostname'] }}; grabimage -i {{ item['softwareimage'] }} -w --wait"'
