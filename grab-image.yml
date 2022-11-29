@@ -15,4 +15,4 @@
         path: "{{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml" 
         block: "{{ lookup('template', 'templates/grab-image.j2') }}"
         marker: ""
-      loop: "{{ ansible_local['custom']['nodes'] | selectattr('updatenode', 'equalto', True) }}"
+      loop: "{{ ansible_local['custom']['nodes'] | selectattr('updatenode', 'equalto', True) | list }}"
