@@ -80,7 +80,7 @@
   
 - name: print remove_bootif_result
   debug:
-    msg: "{{ remove_bootif_result.stdout_lines }}"
+    msg: "{{ remove_bootif_result.stdout_lines | default('default') }}"
     
 - name: Set MAC address of node {{ item['hostname'] }} to {{ item['provisioningmac'] }}
   brightcomputing.bcm92.physical_node:
@@ -90,7 +90,7 @@
   
 - name: print set_mac_result
   debug:
-    msg: "{{ set_mac_result.stdout_lines }}"
+    msg: "{{ set_mac_result.stdout_lines | default('default') }}"
     
 #- name: Set MAC address of node {{ item['hostname'] }} to {{ item['provisioningmac'] }}
 #  command:
@@ -105,4 +105,4 @@
 
 - name: print set_powercontrol_result
   debug:
-    msg: "{{ set_powercontrol_result.stdout_lines }}"
+    msg: "{{ set_powercontrol_result.stdout_lines | default('default') }}"
