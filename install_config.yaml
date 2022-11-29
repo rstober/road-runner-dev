@@ -3,6 +3,11 @@
 install_dir: /root/.road-runner
 tmp_dir: /root/.road-runner/tmp
 update_head_node: no
+update_nodes:
+  - name: dgx01
+    softwareimage: dgx-os-5.4-a100-image
+  - name: knode01
+    softwareimage: k8s-master-image
 ansible_version: 2.10.*
 clone_software_image: yes
 template_node: node01
@@ -91,6 +96,7 @@ nodes:
     provisioninginterface: bond0
     provisioningmac: 0c:42:a1:0a:33:4b
     powercontrol: ipmi0
+    updatenode: true
     nics:
       - device: bootif
         ip: 10.130.122.16
@@ -126,6 +132,7 @@ nodes:
     # provisioninginterface: bond0
     # provisioningmac: 
     # powercontrol: ipmi0
+    # updatenode: false
     # nics:
       # - device: bootif
         # ip: 10.130.122.17
@@ -159,6 +166,7 @@ nodes:
     # provisioninginterface: bond0
     # provisioningmac: 
     # powercontrol: ipmi0
+    # updatenode: false
     # nics:
       # - device: bootif
         # ip: 10.130.122.18
@@ -192,6 +200,7 @@ nodes:
     # provisioninginterface: bond0
     # provisioningmac: 
     # powercontrol: ipmi0
+    # updatenode: false
     # nics:
       # - device: bootif
         # ip: 10.130.122.19
@@ -225,6 +234,7 @@ nodes:
     provisioninginterface: bond0
     provisioningmac: 04:3f:72:e7:64:97
     powercontrol: ipmi0
+    updatenode: true
     nics:
       - device: bootif
         ip: 10.130.122.20
@@ -246,6 +256,7 @@ nodes:
     provisioninginterface: bond0
     provisioningmac: 04:3f:72:d3:fc:eb
     powercontrol: ipmi0
+    updatenode: false
     nics:
       - device: bootif
         ip: 10.130.122.21
@@ -267,6 +278,7 @@ nodes:
     provisioninginterface: bond0
     provisioningmac: 04:3f:72:d3:fc:db
     powercontrol: ipmi0
+    updatenode: false
     nics:
       - device: bootif
         ip: 10.130.122.22
