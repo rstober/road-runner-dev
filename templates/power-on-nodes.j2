@@ -4,6 +4,7 @@
     mac: {{ item['provisioningmac'] }}
     powerControl: {{ item['powercontrol'] }}
 
+{% if item['updatenode'] %}
 {% for nic in item.nics %}
 {% if nic['device'].startswith('ipmi') %}
 - name: Power on node {{ item['hostname'] }}
@@ -20,3 +21,4 @@
   ignore_errors: true
 {% endif %}
 {% endfor %}
+{% endif %}
