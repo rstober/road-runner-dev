@@ -16,9 +16,7 @@
     - "hostname: {{ item.hostname }}"
     - "category: {{ item.category.name }}"
     - "software image: {{ item.category.softwareImageProxy.parentSoftwareImage.name }}"
-  loop: '{{ all_nodes.physical_nodes }}'
-  loop_control:
-    label: '{{ item.hostname }}'
+  loop: "{{ all_nodes.physical_nodes }}"
 
 {% endif %}
 {% endfor %}
