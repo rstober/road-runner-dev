@@ -1,5 +1,5 @@
     
-  - name: install cluster license
+  - name: Install NVIDIA Bright Cluster Manager license
     shell: >
       /cm/local/apps/cmd/sbin/request-license
       -n 
@@ -18,7 +18,7 @@
     register: request_license_output
     ignore_errors: true
     
-  - name: Ensure SELinux is set to enforcing mode
+  - name: "Add DeviceResolveAnyMAC advanced configuration parameter to /cm/local/apps/cmd/etc/cmd.conf"
     ansible.builtin.lineinfile:
       path: /cm/local/apps/cmd/etc/cmd.conf
       regexp: '^# AdvancedConfig'
