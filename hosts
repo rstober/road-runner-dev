@@ -1,6 +1,6 @@
 all:
   hosts:
-    localhost:
+    bright92-head1:
     dgx01:
     dgx02:
     dgx03:
@@ -8,3 +8,22 @@ all:
     knode01:
     knode02:
     knode03:
+  children:
+    masters:
+      hosts:
+        bright92-head1
+    k8s-masters:
+      hosts:
+        knode01:
+        knode02:
+        knode03:
+    dgx:
+      hosts:
+        dgx01:
+        dgx02:
+        dgx03:
+        dgx04:
+    update-nodes:
+      hosts:
+        dgx01:
+        knode01:
