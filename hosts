@@ -1,5 +1,6 @@
 all:
   hosts:
+    localhost:
     bright92-head1:
     dgx01:
     dgx02:
