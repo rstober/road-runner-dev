@@ -4,19 +4,19 @@
  
   tasks:
       
-    - name: Touch {{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml
+    - name: Touch {{ ansible_local['custom']['install_dir'] }}/roles/grabimage/tasks/main.yml
       ansible.builtin.file:
-        path: "{{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml"
+        path: "{{ ansible_local['custom']['install_dir'] }}/roles/grabimage/tasks/main.yml"
         state: touch
         
     - name: register all physical_nodes
       register: all_nodes
       brightcomputing.bcm92.physical_node_info: {}
       
-    - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml
+    - name: Write playbook {{ ansible_local['custom']['install_dir'] }}/roles/grabimage/tasks/main.yml
       ansible.builtin.blockinfile:
         insertafter: EOF
-        path: "{{ ansible_local['custom']['install_dir'] }}/roles/power/tasks/main.yml" 
+        path: "{{ ansible_local['custom']['install_dir'] }}/roles/grabimage/tasks/main.yml" 
         block: "{{ lookup('template', 'templates/grab-image.j2') }}"
         marker: ""
       loop: "{{ ansible_local['custom']['nodes'] | selectattr('updatenode', 'equalto', True) | list | reverse }}"
