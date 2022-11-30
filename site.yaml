@@ -1,22 +1,17 @@
 ---
-- hosts: node01
+- hosts: update-nodes
   roles:
-    #- updates
+    - updates
 
 - hosts: localhost
   roles:
-    #- license
-    # - networks
-    # - software_images
-    # - categories
-    # - nodes
-    #- packages
-    #- kubernetes
-    #- wlms
-    #- autoscaler
-    #- csps
-    #- jupyter
-    #- users
+    - license
+    - networks
+    - software_images
+    - categories
+    - nodes
     - power
-    #- apps
+    - users
+    # - kubernetes
+    # - jupyter
     
