@@ -97,6 +97,7 @@ nodes:
     provisioningmac: 0c:42:a1:0a:33:4b
     powercontrol: ipmi0
     updatenode: true
+    softwareimage: dgx-os-5.4-a100-image
     nics:
       - device: bootif
         ip: 10.130.122.16
@@ -133,6 +134,7 @@ nodes:
     # provisioningmac: 
     # powercontrol: ipmi0
     # updatenode: false
+    # softwareimage: dgx-os-5.4-a100-image
     # nics:
       # - device: bootif
         # ip: 10.130.122.17
@@ -167,6 +169,7 @@ nodes:
     # provisioningmac: 
     # powercontrol: ipmi0
     # updatenode: false
+    # softwareimage: dgx-os-5.4-a100-image
     # nics:
       # - device: bootif
         # ip: 10.130.122.18
@@ -201,6 +204,7 @@ nodes:
     # provisioningmac: 
     # powercontrol: ipmi0
     # updatenode: false
+    # softwareimage: dgx-os-5.4-a100-image
     # nics:
       # - device: bootif
         # ip: 10.130.122.19
@@ -235,6 +239,7 @@ nodes:
     provisioningmac: 04:3f:72:e7:64:97
     powercontrol: ipmi0
     updatenode: true
+    softwareimage: k8s-master-image
     nics:
       - device: bootif
         ip: 10.130.122.20
@@ -257,6 +262,7 @@ nodes:
     provisioningmac: 04:3f:72:d3:fc:eb
     powercontrol: ipmi0
     updatenode: false
+    softwareimage: k8s-master-image
     nics:
       - device: bootif
         ip: 10.130.122.21
@@ -279,6 +285,7 @@ nodes:
     provisioningmac: 04:3f:72:d3:fc:db
     powercontrol: ipmi0
     updatenode: false
+    softwareimage: k8s-master-image
     nics:
       - device: bootif
         ip: 10.130.122.22
