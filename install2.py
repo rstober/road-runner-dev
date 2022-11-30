@@ -157,7 +157,7 @@ if __name__ == '__main__':
     if "software_images" in config:
         
         shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yml")
-        shutil.copyfile("default-ansible-vars", install_dir + "/roles/updates/vars/main.yml")
+        #shutil.copyfile("default-ansible-vars", install_dir + "/roles/updates/vars/main.yml")
         
         os.system('ansible-playbook -ilocalhost, clone-software-images.yml')
         
