@@ -1,6 +1,10 @@
 all:
   hosts:
     localhost:
-    node01:
-    node02:
-    node03:
+    dgx01:
+    dgx02:
+    dgx03:
+    dgx04:
+    knode01:
+    knode02:
+    knode03:
