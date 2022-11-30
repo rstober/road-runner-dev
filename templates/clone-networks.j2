@@ -1,5 +1,5 @@
         
-- name: Write playbook that creates {{ item['name'] }} from {{ item['clone_from'] }}
+- name: Create {{ item['name'] }} network by cloning {{ item['clone_from'] }}
   brightcomputing.bcm92.network:
     name: {{ item['name'] }}
     domainName: {{ item['domainname'] }}
