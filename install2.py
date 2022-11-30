@@ -162,7 +162,7 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, clone-software-images.yml')
         
-        os.system('ansible-playbook -ilocalhost, apt-update-node.yml')
+        #os.system('ansible-playbook -ilocalhost, apt-update-node.yml')
         
         os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
         
@@ -181,7 +181,7 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, power-on-nodes.yml')
         
-        #os.system('ansible-playbook -ilocalhost, wait-for-up.yml')
+        os.system('ansible-playbook -ilocalhost, wait-for-up.yml')
         
         os.system('ansible-playbook -ilocalhost, grab-image.yml')
         
