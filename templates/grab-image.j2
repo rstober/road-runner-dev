@@ -1,3 +1,11 @@
+ 
+- name: Wait for node {{ node['hostname'] }} to be UP
+  ansible.builtin.shell: cmsh -c "device status {{ node['hostname'] }}"
+  register: result
+  until: result.stdout.find("UP") != -1
+  retries: 20
+  delay: 60
+
 {% for bnode in all_nodes.physical_nodes %}
 {% if bnode.hostname == node.hostname %} 
 - name: Grab image from {{ bnode.hostname }} to {{ bnode.category.softwareImageProxy.parentSoftwareImage.name }}
