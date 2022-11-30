@@ -1,7 +1,12 @@
-  
-# nodes need to be updated here
 
 {% for bnode in all_nodes.physical_nodes %}
+
+- name: Print info
+  debug:
+    msg: 
+    - "bnode hostname: {{ bnode.hostname }}"
+    - "node hostname: {{ node.hostname }}"
+    
 {% if bnode.hostname == node.hostname %} 
 - name: Grab image from {{ bnode.hostname }} to {{ bnode.category.softwareImageProxy.parentSoftwareImage.name }}
   ansible.builtin.shell: 'cmsh -c "device use {{ bnode.hostname }}; grabimage -i {{ bnode.category.softwareImageProxy.parentSoftwareImage.name }} -w --wait"'
