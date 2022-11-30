@@ -1,0 +1,24 @@
+---
+- hosts: all
+  gather_facts: true
+ 
+  tasks:
+      
+    - name: Touch playbook that updates nodes: {{ ansible_local['custom']['install_dir'] }}/roles/updates/tasks/main.yml
+      ansible.builtin.file:
+        path: "{{ ansible_local['custom']['install_dir'] }}/roles/updates/tasks/main.yml"
+        state: touch
+        
+    - name: Register all physical_nodes
+      register: all_nodes
+      brightcomputing.bcm92.physical_node_info: {}
+      
+    - name: Write playbook that updates nodes: {{ ansible_local['custom']['install_dir'] }}/roles/updates/tasks/main.yml
+      ansible.builtin.blockinfile:
+        insertafter: EOF
+        path: "{{ ansible_local['custom']['install_dir'] }}/roles/updates/tasks/main.yml" 
+        block: "{{ lookup('template', 'templates/apt-update-nodes.j2') }}"
+        marker: ""
+      loop: "{{ ansible_local['custom']['nodes'] | selectattr('updatenode', 'equalto', True) | list | reverse }}"
+      loop_control:
+        loop_var: node
