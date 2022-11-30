@@ -148,26 +148,26 @@ if __name__ == '__main__':
     
     printBanner('Preparing playbooks')
     
-    # if "license" in config:
+    if "license" in config:
     
-        # shutil.copyfile("default-ansible-vars", install_dir + "/roles/license/vars/main.yml")
+        shutil.copyfile("default-ansible-vars", install_dir + "/roles/license/vars/main.yml")
         
-        # os.system('ansible-playbook -ilocalhost, install-license.yml')
+        os.system('ansible-playbook -ilocalhost, install-license.yml')
         
-    # if "software_images" in config:
+    if "software_images" in config:
         
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yml")
-        # shutil.copyfile("default-ansible-vars", install_dir + "/roles/updates/vars/main.yml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/software_images/vars/main.yml")
+        shutil.copyfile("default-ansible-vars", install_dir + "/roles/updates/vars/main.yml")
         
-        # os.system('ansible-playbook -ilocalhost, clone-software-images.yml')
+        os.system('ansible-playbook -ilocalhost, clone-software-images.yml')
         
-        # os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
+        os.system('ansible-playbook -ilocalhost, append-kernel-modules.yml')
         
-    # if "categories" in config:
+    if "categories" in config:
         
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/categories/vars/main.yml")
             
-        # os.system('ansible-playbook -ilocalhost, clone-categories.yml')
+        os.system('ansible-playbook -ilocalhost, clone-categories.yml')
             
     if "nodes" in config:
     
@@ -182,21 +182,21 @@ if __name__ == '__main__':
         
         os.system('ansible-playbook -ilocalhost, grab-image.yml')
         
-    # if "networks" in config:
+    if "networks" in config:
         
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/networks/vars/main.yml")
         
-        # os.system('ansible-playbook -ilocalhost, clone-networks.yml')
+        os.system('ansible-playbook -ilocalhost, clone-networks.yml')
             
-    # if "users" in config:
+    if "users" in config:
     
-        # shutil.copyfile("bright-ansible-vars", install_dir + "/roles/users/vars/main.yaml")
+        shutil.copyfile("bright-ansible-vars", install_dir + "/roles/users/vars/main.yaml")
         
-        # for user in config["users"]:
+        for user in config["users"]:
             
-            # password=generatePassword(8)
+            password=generatePassword(8)
             
-            # os.system('ansible-playbook -ilocalhost, -e "username={username} password={password}" add-user.yml'.format(username=user, password=password))
+            os.system('ansible-playbook -ilocalhost, -e "username={username} password={password}" add-user.yml'.format(username=user, password=password))
         
     # if "kubernetes" in config:
     
