@@ -13,7 +13,7 @@ all:
     masters:
       hosts:
         bright92-head1
-    k8s-masters:
+    k8smasters:
       hosts:
         knode01:
         knode02:
@@ -24,7 +24,7 @@ all:
         dgx02:
         dgx03:
         dgx04:
-    update-nodes:
+    updatenodes:
       hosts:
         dgx01:
         knode01:
